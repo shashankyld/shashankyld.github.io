@@ -1,0 +1,64 @@
+I want my page to include these major sections
+
+1. Home
+2. Tweets
+3. Projects
+4. Inspiration
+5. Drop a Message
+
+# Home Section
+
+A. This should contain (at the beginning)
+1. One idea I like
+2. Picture of me
+
+B. Contains a list of interactive icon links to my socail media platforms
+1. Twitter
+2. Github
+3. LinkedIn
+4. Instagram
+5. Spotify
+
+C. A minimal timeline of my life following these rules
+1. Latest events at the top
+2. Each event in a row has a date, and an interactive title
+
+D. My Conference Papers
+1. Each paper has a photo/gif, title, authors and a description
+2. Photo is on the left
+3. Title, authors and description are on the right
+4. Title is a link to the paper
+5. Title is above the authors and authors are above the description
+6. Description is a paragraph of text
+
+# Tweets Section
+1. This should contain a scrollable list of my tweets
+2. Each tweet is an embedded tweet
+
+# Projects Section
+1. This should contain a list of my projects
+2. Each project has a photo, title, and a description to the project
+3. Photo is on the left
+4. Title and description are on the right
+5. Title is a link to the project
+6. Title is above the description
+7. Description is a paragraph of text
+
+# Inspiration Section
+1. This should contain a list of my inspirations
+Example of an inspiration
+1. Iridov collision problems: Unique way of solving collision problems
+2. Mario Reinforcement Learning: Youtube Video
+3. Ludwig Wittgenstein: About Language
+4. ChatGPT
+5. Comma.ai George Hotz
+6. Elon Musk: And all his Projects
+7. Lex Fridman: Podcasts
+8. Puri Jagannadh: Musings
+9. Ramuism Series
+10. Cyrill Stachniss and SLAM
+11. My Math Tuition Teacher, Prof SK Saha, Prof Madhava Krishna
+
+# Drop a Message Section
+Maybe this can be done later, leave this for now
+
