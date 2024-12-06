@@ -235,3 +235,33 @@ li:hover {
   background-color: #f7f7f7; /* Subtle background highlight on hover */
   border-left: 3px solid #1a73e8; /* Accent border on hover */
 }
+
+/* Pop-up styling */
+.popup {
+  position: fixed;
+  right: -300px; /* Ensure the pop-up is off-screen initially */
+  top: 20%;
+  width: 300px;  /* Adjust the width based on your image size */
+  height: auto;  /* Automatically adjust height to image */
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease-in-out; /* Smooth slide-in animation */
+  overflow: hidden;  /* Ensure no part of the image is visible when hidden */
+  padding: 10px;  /* Padding for spacing */
+}
+
+#popup-image {
+  width: 100%;
+  height: auto;  /* Maintain aspect ratio */
+  object-fit: contain;  /* Ensure image is fully visible without cropping */
+  border-radius: 10px;
+}
+
+.popup-caption {
+  margin-top: 10px;  /* Space between image and caption */
+  font-size: 14px;  /* Adjust font size */
+  color: #333;  /* Dark text color */
+  text-align: center;  /* Center-align the caption */
+  font-family: Arial, sans-serif;  /* Optional: change font style */
+}
