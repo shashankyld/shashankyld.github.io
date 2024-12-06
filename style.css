@@ -141,3 +141,97 @@ nav ul {
     width: 150px; /* adjust the width as per your requirements */
     vertical-align: top;
   }
+
+  .personal-projects {
+    margin-top: 50px; /* Adds space above the section */
+  }
+  
+  .personal-projects h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .project {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px; /* Space between projects */
+  }
+  
+  .project-image {
+    width: 100px; /* Adjust image size */
+    height: 100px; /* Adjust image size */
+    margin-right: 20px; /* Adds space between image and description */
+    border-radius: 8px; /* Optional: Makes the image edges rounded */
+  }
+  
+  .project-details {
+    flex: 1;
+  }
+  
+  .project-details h3 {
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .project-details p {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+  }
+  
+  .project-link {
+    font-size: 16px;
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .project-link:hover {
+    text-decoration: underline;
+  }
+  
+
+/* # Highlight the timeline */
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  font-family: 'Arial', sans-serif; /* Clean, modern font */
+}
+
+li {
+  margin-bottom: 20px;
+  padding-left: 10px;
+  border-left: 3px solid #ddd; /* Subtle left border for modern design */
+  transition: all 0.3s ease-in-out; /* Smooth hover effects */
+}
+
+.date {
+  font-weight: bold;
+  color: #444; /* Subtle dark color for the date */
+}
+
+.highlight {
+  color: #1a73e8; /* Soft blue, modern and clean */
+  font-weight: bold;
+  text-decoration: none; /* Remove underline for a cleaner look */
+  border-bottom: 1px solid #ddd; /* Subtle underline effect */
+  transition: all 0.2s ease-in-out; /* Smooth hover effect for highlights */
+}
+
+.highlight:hover {
+  color: #007aff; /* Slightly darker blue on hover for interactivity */
+  border-bottom: 1px solid #007aff; /* More visible underline on hover */
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555; /* Soft gray for paragraph text */
+}
+
+li:hover {
+  background-color: #f7f7f7; /* Subtle background highlight on hover */
+  border-left: 3px solid #1a73e8; /* Accent border on hover */
+}
