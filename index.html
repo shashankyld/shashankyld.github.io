@@ -1,533 +1,237 @@
-<!-- I want my page to include these major sections
-
-1. Home
-2. Tweets
-3. Projects
-4. Inspiration
-5. Drop a Message
-
-# Home Section
-
-A. This should contain (at the beginning)
-1. One idea I like
-2. Picture of me
-
-B. Contains a list of interactive icon links to my socail media platforms
-1. Twitter
-2. Github
-3. LinkedIn
-4. Instagram
-5. Spotify
-
-C. A minimal timeline of my life following these rules
-1. Latest events at the top
-2. Each event in a row has a date, and an interactive title
-
-D. My Conference Papers
-1. Each paper has a photo/gif, title, authors and a description
-2. Photo is on the left
-3. Title, authors and description are on the right
-4. Title is a link to the paper
-5. Title is above the authors and authors are above the description
-6. Description is a paragraph of text
-
-# Tweets Section
-1. This should contain a scrollable list of my tweets
-2. Each tweet is an embedded tweet
-
-# Projects Section
-1. This should contain a list of my projects
-2. Each project has a photo, title, and a description to the project
-3. Photo is on the left
-4. Title and description are on the right
-5. Title is a link to the project
-6. Title is above the description
-7. Description is a paragraph of text
-
-# Inspiration Section
-1. This should contain a list of my inspirations
-Example of an inspiration
-1. Iridov collision problems: Unique way of solving collision problems
-2. Mario Reinforcement Learning: Youtube Video
-3. Ludwig Wittgenstein: About Language
-4. ChatGPT
-5. Comma.ai George Hotz
-6. Elon Musk: And all his Projects
-7. Lex Fridman: Podcasts
-8. Puri Jagannadh: Musings
-9. Ramuism Series
-10. Cyrill Stachniss and SLAM
-11. My Math Tuition Teacher, Prof SK Saha, Prof Madhava Krishna
-
-# Drop a Message Section
-Maybe this can be done later, leave this for now
- -->
-
-<!-- MINIMAL DESIGN -->
-
 <!DOCTYPE html>
-
-
 <html lang="en">
-    <head>
-        <title>Shashank Dammalapati</title>
-        <!-- ADD IMAGE -->
-        <link rel="shortcut icon" href="images/shashank_red.png" type="image/png">
-        <link rel="stylesheet" href="style.css">
-        <style>
-            body {
-                font-family: 'Monaco', monospace;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLAM Containment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a12;
+            overflow: hidden;
+            transition: opacity 0.8s ease-out;
+        }
+
+        canvas {
+            display: block;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="slamCanvas"></canvas>
+
+    <script>
+        class SLAMVisualizer {
+            constructor() {
+                this.canvas = document.getElementById('slamCanvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.robot = {
+                    x: 0.5,
+                    y: 0.5,
+                    vx: 0.0035,
+                    vy: 0.0045,
+                    size: 12,
+                    trail: []
+                };
+                this.landmarks = [];
+                this.mouse = { x: -1, y: -1 };
+                this.init();
             }
-        </style>
-        
-    </head>
 
-    <body>
-    
+            init() {
+                this.resizeCanvas();
+                window.addEventListener('resize', () => this.resizeCanvas());
+                this.canvas.addEventListener('mousemove', (e) => this.setMousePosition(e));
+                document.body.addEventListener('click', () => this.handleClick());  // Switch page on click
+                this.generateLandmarks();
+                this.animate();
+            }
 
+            generateLandmarks() {
+                for (let i = 0; i < 80; i++) {
+                    this.landmarks.push({
+                        x: Math.random(),
+                        y: Math.random(),
+                        active: false
+                    });
+                }
+            }
 
+            setMousePosition(e) {
+                const rect = this.canvas.getBoundingClientRect();
+                this.mouse.x = (e.clientX - rect.left) / this.canvas.width;
+                this.mouse.y = (e.clientY - rect.top) / this.canvas.height;
+            }
 
-    <!-- ADD SECTIONS AS DESCRIBED ABOVE -->
-    <!-- <header>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#tweets">Tweets</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#inspiration">Inspiration</a></li>
-        <li><a href="#message">Drop a Message</a></li>
-      </ul>
-    </nav>
-    </header> -->
-   
-    
-    <!-- HOME SECTION -->
-    <section id="home">
-        <!-- <h2>Home</h2> -->
-      
-        <div class="intro">
-          <img src="Images/shashank_red.png" alt="Picture of me" style="border-radius: 50%; width: 100px; height: 100px;">          
-          <!-- <h3>Introduction</h3> -->
-          <p>
-            Masters Student @ University of Bonn | B.Tech in Mechanical Engineering @ IIT Delhi<br><br>
-            <!-- I like to be free, I wish to live forever with 100 health.<br> -->
-            I'm interested in the future of SLAM, World Models, and their application in solving robotics.
-          </p>
-          
-        </div>
+            resizeCanvas() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            }
 
-        
-        
-      
-        <div class="social-media">
-          <!-- <h3>Social Media</h3> -->
-          <ul class="social-media">
-            <li><a href="https://twitter.com/sha0nk" style="background-image: url('Images/twitter.png')"><span class="sr-only">Twitter</span></a></li>
-            <li><a href="https://github.com/shashankyld" style="background-image: url('Images/github.png')"><span class="sr-only">GitHub</span></a></li>
-            <li><a href="https://www.linkedin.com/in/shashank-dammalapati-03169b145/" style="background-image: url('Images/linkedin.png')"><span class="sr-only">LinkedIn</span></a></li>
-            <li><a href="https://www.instagram.com/shashank4pi/" style="background-image: url('Images/instagram.png')"><span class="sr-only">Instagram</span></a></li>
-            <li><a href="https://open.spotify.com/show/6cfYcoQQenVXiGFyxjWpWr" style="background-image: url('Images/spotify.png')"><span class="sr-only">Spotify</span></a></li>
-          </ul>
-          
-        </div>
-      
-        <div class="timeline">
-          <h3>Recent Updates</h3>
-          <ul>
-            <li data-image="Images/summerschool.png" data-caption="I attended the Summer School 2024 on Multi-Robot Systems, where I learned from top experts in the field. The program included lectures, hands-on computer tasks, and outdoor experiments with aerial robots. It was a great opportunity to apply my knowledge in real-world scenarios and connect with fellow students and researchers.">
-              <span class="date">August '24</span>
-              <p>Attended the <span class="highlight">IEEE RAS Summer School on Multi-Robot Systems, Prague, Czech Republic</span></p>
-            </li>
-            <li>
-              <span class="date">Jun '24</span>
-              <p>Joined <span class="highlight">Agrobotics Lab</span>, UniBonn as a <span class="highlight">Student Assistant</span></p>
-            </li>
-            <li data-image="Images/apple.gif" data-caption="Worked on setting up Husky robot with multiple realsense cameras, GNSS receivers, and a Lidar using Docker.">
-              <span class="date">Jan '23</span>
-              <p>Joined <span class="highlight">Stachniss Lab</span>, UniBonn as a <span class="highlight">Student Assistant</span></p>
-            </li>
-            <li>
-              <span class="date">Oct '22</span>
-              <p>(present) Joined Masters in <span class="highlight">Mobile Sensing & Robotics</span> at <span class="highlight">University of Bonn</span></p>
-            </li>
-            <li data-image="Images/EWOK_Planner_for_PX4.gif" data-caption="I worked breifly at RRC, IIIT Hyderabad under Prof. Madhava Krishna as a student assistant where I worked on tasks ranging from assembling drones to testing various autonomous mapping/planning pipelines on the lab's drones">
-              <span class="date">May '22</span>
-              <p>Joined <span class="highlight">RRC</span> in <span class="highlight">IIIT-Hyderabad</span> as a <span class="highlight">Project Assistant</span></p>
-            </li>
-            <li data-image="Images/IIT_Ground_3D_model.gif" data-caption="I joined a start-up incubation centre as a resident to build drones that can be used to build maps that can be used in construction/survey industries. I later realised that it is more optimal for me to pursue higher education in SLAM which will allow me build much better systems">
-              <span class="date">Sept '22</span>
-              <p>Joined <span class="highlight">IHFC</span> as a <span class="highlight">Research & Entrepreneurship Development Intern</span> (1st co-hort)</p>
-            </li>
-            <li data-image="Images/Aerial_Manipulator.gif" data-caption="We developed a drone + manipulator system to pick and carry a payload of 500g. We implemented Auruco Marker detection and landing for this drone">
-              <span class="date">Sept '22</span>
-              <p>Joined <span class="highlight">Indo-Korea Joint Network on Robotics</span> as a <span class="highlight">Project Assistant</span> (IIT-Delhi)</p>
-            </li>
-            <li>
-              <span class="date">Jan '22</span>
-              <p>Joined <span class="highlight">Vecros</span> (startup) as a <span class="highlight">Hardware Design Engineer</span></p>
-            </li>
-            <li data-image="Images/Robomuse_5_0_Gmapping.gif" data-caption="For my thesis, I worked on implementing GMapping, AMCL for Robomuse, a diffrential robot. This involved assembling the robot and creating the URDF of the robot for simulation. This is the first time I got introduced to SLAM. But only later when I joined UniBonn, I grasped the relevant math.">
-              <span class="date">June '21</span>
-              <p><span class="highlight">Graduated</span> with a <span class="highlight">Bachelors Degree</span> in Mechanical Engineering,IIT Delhi</p>
-            </li>
-            <li data-image="Images/boeing.jpeg" data-caption="My Team won the 1st prize of ₹50,000 for designing a model aeroplane with the highest payload/weight ratio">
-              <span class="date">May '19</span>
-              <p>Assumed multiple leadership roles at <span class="highlight">Aeromodelling Club</span> - <span class="highlight">IIT Delhi</span></p>
-            </li>
-            <li data-image="Images/disa.gif" data-caption="The aim of this project is to build a drone from scratch and inject a motor failure in the drone remotely - the long term vision is to solve safe landing in case of a motor failure, this is my first introduction to ROS and Drones. This research grant of ₹30,000 is awarded to students after shortlisting them based on thier proposal for a 8-week summer research program">
-              <span class="date">May '18</span>
-              <p>Awarded with <span class="highlight">Design Innovation Summer Award, 2018</span> - <span class="highlight">IIT Delhi</span></p>
-            </li>
-            <li>
-              <span class="date">June '17</span>
-              <p>Joined <span class="highlight">IIT Delhi</span> for my <span class="highlight">Bachelors degree</span> in <span class="highlight">Mechanical Engineering</span></p>
-            </li>
-          </ul>
+            update() {
+                if (this.mouse.x >= 0 && this.mouse.y >= 0) {
+                    const dx = this.robot.x - this.mouse.x;
+                    const dy = this.robot.y - this.mouse.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
 
+                    if (dist < 0.25) {
+                        const avoidanceForce = 0.03 * (1 - dist / 0.25);
+                        this.robot.vx += dx * avoidanceForce;
+                        this.robot.vy += dy * avoidanceForce;
+                    }
+                }
 
-          
-        </div>
+                const speed = Math.sqrt(this.robot.vx * this.robot.vx + this.robot.vy * this.robot.vy);
+                const maxSpeed = 0.015;
+                if (speed > maxSpeed) {
+                    this.robot.vx = (this.robot.vx / speed) * maxSpeed;
+                    this.robot.vy = (this.robot.vy / speed) * maxSpeed;
+                }
 
-        <div class="personal-projects">
-          <h3>Personal Projects</h3>
-        
-          <!-- Project 1 -->
-          <div class="project">
-            <img src="Images/gsslam.gif" alt="Project 1 Result" class="project-image" style="width: 300px; height: auto;">
-            <div class="project-details">
-              <h3>RGB-D SLAM in Dynamic Environments using Segment Anything Model [IN PROGRESS]</h3>
-              <p>Building a Map of the environment has been an important step in many downstream robotics tasks. Having a distractor free dense photorealistic map is now possible with GS and SAM. Note - Video shown is from GS-SLAM work.</p>
-              <!-- <a href="https://github.com/shashankyld/MasterThesis" target="_blank" class="project-link">View on GitHub</a> -->
-            </div>
-          </div>
+                this.robot.x += this.robot.vx;
+                this.robot.y += this.robot.vy;
 
-          <div class="project">
-            <img src="Images/aria_glasses.png" alt="Project 1 Result" class="project-image" style="width: 300px; height: auto;">
-            <div class="project-details">
-              <h3>Stereo Depth Completion for Aria Glasses [IN PROGRESS]</h3>
-              <p>Estimating Multiview Stereo Depth from slam cameras present on the Meta Aria Glasses .</p>
-              <!-- <a href="https://github.com/shashankyld/aria-stereo-depth-completion" target="_blank" class="project-link">View on GitHub</a> -->
-            </div>
-          </div>
+                if (this.robot.x < 0 || this.robot.x > 1) {
+                    this.robot.vx *= -1;
+                    this.robot.x = Math.max(0, Math.min(1, this.robot.x));
+                }
+                if (this.robot.y < 0 || this.robot.y > 1) {
+                    this.robot.vy *= -1;
+                    this.robot.y = Math.max(0, Math.min(1, this.robot.y));
+                }
 
-          
+                this.robot.trail.push({ x: this.robot.x, y: this.robot.y });
+                if (this.robot.trail.length > 120) this.robot.trail.shift();
+            }
 
-          <div class="project">
-            <img src="Images/bluecarinascene-imageonline.co-6712918.gif" alt="Project 1 Result" class="project-image" style="width: 300px; height: auto;">
-            <div class="project-details">
-              <h3>Instance Completion and Motion Estimation with Deep Shape Priors for Autonomous Driving</h3>
-              <p>The main contribution of this project is a novel object tracking and reconstruction approach that combines learned deep shape priors with classical 3D object detection for improved perception in autonomous driving.</p>
-              <!-- <a href="https://github.com/shashankyld/Instance-Completion-and-Motion-Estimation-with-Deep-Shape-Priors-for-Autonomous-Driving-Presentation" target="_blank" class="project-link">View on GitHub</a> -->
-            </div>
-          </div>
-        
-          <!-- Project 2 -->
-          <!-- <div class="project">
-            <img src="Images/project2_result.gif" alt="Project 2 Result" class="project-image">
-            <div class="project-details">
-              <h3>Project Name 2</h3>
-              <p>A brief description of the second project goes here. You can describe the key challenges faced or the impact of the project.</p>
-              <a href="https://github.com/username/project2" target="_blank" class="project-link">View on GitHub</a>
-            </div>
-          </div> -->
-        
-          <!-- Add more projects as needed -->
-        </div>
-        
-      
-        <div class="conference-papers">
-          <h3>Conference Papers and Awards</h3>
-          <ul>
-            <li>
-              
-              <div class="paper-details">
-                
-                <h4><a href="https://ieeexplore.ieee.org/abstract/document/9828332">Development of an Autonomous UAV Integrated with a Manipulator and a Soft Gripper | IEEE - ASCC '22</a></h4>
-                <!-- <div class="paper-image">
-                  <img src="Images/soft_gripper.png" alt="Paper Image">
-                </div>
-                <p class="authors">Debadrata Sarkar, Aman Arora, Soumen Sen, Sree SS Katta, *D Shashank, M Rohan, SK Saha</p>
-                <p class="description">We present a quad-rotor drone system that includes a manipulator and a soft gripper, designed for delivering small packages of up to 500 grams with care. The paper details the design and development of the system, which integrates the drone, manipulator, and gripper, and discusses potential applications in fields like industry automation, defense, agriculture, and more.</p> -->
-              </div>
-            </li>
-            <li>
-              
-              <div class="paper-details">
-                <h4><a href="https://ieeexplore.ieee.org/abstract/document/9828119">Aeromechanical Design and Analysis of H-Drone Configuration | IEEE - ASCC '22</a></h4>
-                <!-- <div class="paper-image">
-                  <img src="Images/hdrone_aeromodel.png" alt="Paper Image">
-                </div>
-                
-                <p class="authors">D Dwarakanathan, S Raja, P Shanmugam, *D Shashank, M Rohan, C Selvam, R Sanjeeth Kevin, Sree SS Katta, SK Saha</p>
-                <p class="description">We conducted collaborative research between the Indian Institute of Technology, Delhi (IITD) and CSIRNAL to design and analyze the aeromechanics of H-Drone. Our numerical simulations evaluated the aerodynamic and propulsion characteristics, as well as the structural design of the H-Drone. The H-Drone's arms were analyzed for their ability to withstand loads from aerodynamics and rotating propulsive systems. We developed a finite element model and evaluated the structural margin of safety through stress analysis. Additionally, we performed free vibration analysis to establish the structural dynamics of the H-Drone airframe.</p>
-                <div class="paper-image">
-                  <img src="Images/hdrone_stress_analysis.png" alt="Paper Image">
-                </div> -->
-              </div>
-            </li>
-            <li>
-              
-              <div class="paper-details">
-                <h4><a href="https://ieeexplore.ieee.org/abstract/document/9828198">3D Pure Pursuit Guidance of Drones for Autonomous Precision Landing | IEEE - ASCC '22</a></h4>
-                <!-- <div class="paper-image">
-                  <img src="Images/gazebo_aruco.png" alt="Paper Image">
-                </div>
-                <p class="authors">Kaushal Kishore, Sagar Dalai, Yash Jangir, Samarth Singh, M Rohan, *D Shashank, Sree SS Katta, SK Saha</p>
-                <p class="description">We propose a simplified pure pursuit-based method for landing a UAV precisely to its target location in the presence of external disturbance and inaccurate GPS localization. The proposed method utilizes virtual targets to generate drone way-points, which are then followed by the UAV using classical pure-pursuit. The method generates a smooth arc for the Drone to follow and avoid crashing while landing. We identify the Aruco marker placed on the landing pad using an OpenCV framework for self-localization of the drone. Additionally, a PID controller is used to ensure that the Drone follows the generated trajectory within a reliable margin of error. Our method delivers an efficient and computationally less expensive landing approach for autonomous drones.</p>
-              </div> -->
-            </li>
-            <li>
-              
-              <!-- <div class="paper-details">
-                <h4><a href="#">Design Innovation Summer Award</a></h4>
-                <div class="paper-image">
-                  <img src="Images/disa.gif" width="512" height="360" alt="GIF Image">
-                </div>
-                <p class="authors">*Shashank Dammalapati, Nagendra Chinmai, Vamsi Krishna</p>
-                <p class="description">We created a motor failsafe mode for Ardupilot (opensource flight controller). I personally consider the project a failure. </p>
-              </div> -->
-            </li>
-          </ul>
-        </div>
-        </section>
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.drawGrid();
+                this.drawLandmarks();
+                this.drawSensorRays();
+                this.drawTrail();
+                this.drawRobot();
+            }
 
-        <!-- TWEETS SECTION  -->
+            drawGrid() {
+                const gridSize = 18;
+                this.ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+                this.ctx.lineWidth = 0.5;
 
-<!--         <section id="tweets">
-            <h2>Tweets</h2>
-            <div class="tweet">
-              <img src="https://placehold.it/50x50" alt="Twitter profile picture">
-              <div class="tweet-content">
-                <p class="tweet-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac velit enim. Morbi ac lorem sapien.</p>
-                <p class="tweet-date">April 5, 2023</p>
-              </div>
-            </div>
-            <div class="tweet">
-              <img src="https://placehold.it/50x50" alt="Twitter profile picture">
-              <div class="tweet-content">
-                <p class="tweet-text">Pellentesque mollis lobortis augue, nec eleifend augue iaculis in. Praesent tincidunt enim elit, a tincidunt ex mollis vel.</p>
-                <p class="tweet-date">April 3, 2023</p>
-              </div>
-            </div>
-          </section>
- -->
+                for (let i = 0; i <= gridSize; i++) {
+                    const pos = i / gridSize;
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(pos * this.canvas.width, 0);
+                    this.ctx.lineTo(pos * this.canvas.width, this.canvas.height);
+                    this.ctx.stroke();
 
-     <!-- Some Useful Links  -->
-     <section id="Useful Links for Building Software for Robots">
-      <h3>Useful Links for Building Software for Robots</h3>
-      <ol>
-        <li><a href="http://vision.stanford.edu/teaching/cs131_fall1617/lectures/lecture2_linalg_review_cs131_2016.pdf">Linear Algebra Primer</a></li>
-        <li><a href="http://immersivemath.com/ila/index.html">Immersive Linear Algebra - By by Ström, Åström, and Akenine-Möller</a></li>
-        <li><a href="https://rpg.ifi.uzh.ch/docs/teaching/2024/FurgaleTutorial.pdf">Representing Robot Pose: The good, the bad, and the ugly - By Paul Furgale (ETH Zurich) </a></li>
-        <li><a href="https://rpg.ifi.uzh.ch/teaching.html">Fall 2024 - Vision Algorithms for Mobile Robotics</a>
-        <li><a href="https://www.ipb.uni-bonn.de/teaching/index.html">Courses from IPB - UniBonn</a>
-        <li><a href="https://www.youtube.com/watch?v=8Rbvfq2Xd2E">Intro to Lie Theory for Robotics</a>
-        <li><a href="https://udlbook.github.io/udlbook/">Understanding Deep Learning - Simon J.D. Prince</a>
-        <li><a href="https://github.com/SLAM-Handbook-contributors/slam-handbook-public-release/blob/main/main.pdf">The SLAM Handbook - Coming Soon</a>
-        <li><a href="https://krrish94.github.io/assets/pdf/thesis_krishna.pdf">Differential World Models - Krishna Murthy Jatavallabhula</a>
-        <li><a href="https://arxiv.org/pdf/2405.17247v1">Intro to Vision-Language Modelling</a>
-      </ol>
-    </section>
-         <!-- Some Useful Links  -->
-         <section id="Other Useful Textbooks">
-          <h3>Other Useful Textbooks</h3>
-          <ol>
-            <li><a href="http://digamo.free.fr/antitext.pdf">The Economics Anti-Textbook</a></li>
-          </ol>
-        </section>
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(0, pos * this.canvas.height);
+                    this.ctx.lineTo(this.canvas.width, pos * this.canvas.height);
+                    this.ctx.stroke();
+                }
+            }
 
-         <!-- Some Useful Links  -->
-         <section id="Some cool companies in this space">
-          <h3>Checkout these companies</h3>
-          <ol>
-            <li><a href="https://odyssey.systems/introducing-explorer">Odyssey Systems</a></li>
-            <li><a href="https://www.worldlabs.ai/">World Labs</a>
-          </ol>
-        </section>
-<!-- 
-<section id="Personal Aphorisms">
-    <h2>Personal Aphorisms</h2>
-    <div class="Personal Aphorisms">
-      <h3>Metaphysics (About Reality)</h3>
-        <p class="text">
-          <span class="highlight">Metaphysics is the presumption from which you derive all other studies!</span>
-          
-            
-             Maybe I am just mechanical. God is a waste
-            of time. Philosophy is mental work. Thinking is Hallucinating. and Hallucinating is Thinking. In retrospect,
-            everything was a metaphor. Who picks the random? <span class="highlight">Resistance is your true self.</span> Ideas infect! Some phenomena are
-            explained by cause, and some by purpose! All prophets fail. Unlike geographies, thoughts aren't tactile and aren't
-            limited. So publicness is not a responsibility in virtual groups. I can decide what to write so I have free will.
-            Can I be wrong here? Manipulating knowledge (let's say thinking) is indirectly manipulating some physical system.
-            Traveling through space, time, and memories. Imagine food with morally bad taste. Particles are the Objects,
-            Forces are the Plugins, and World as a Simulation. Properties of "I" are too local and temporal for it to be
-            eternal and independent of physical nature. Thinking is Simulating. Experiencing is Living. There is no "I", There
-            is no "You", We are just hosts of information, ideas, and genes. We live in a story that our brain tells itself.
-            Basically, a dream. A mirror is a sensor. Metaphysical Hypothesis: You are a computer. I am a bunch of ideas. I
-            don't have ideas, ideas have me. Some ideas are more viral than others. Ideas influence ideas. Brains and humans
-            are just containers. Nature, we are. I am this world. Consciousness transcends time. Little closer to nothingness.
-            Illusions aren't necessarily bad. In a simulation, we try to minimize the possibilities so that our computational
-            power will not go short. I believe our whole God's systems are simulating entities in clusters, looping individual
-            items' instantiations relatively at times and places closer to their cluster-mates. <span class="highlight">Not who I was, not who I will
-            be. I am is.</span> Space has no grid.
-        </p>  
-      
-      <h3>Language (About its nature and application)</h3>
-        <p class="text">
-            I consider every word I utter and every sentence I write equivalent to any other action I perform. Like walking
-            and kicking a bag. I do not care how people understand my thoughts, I only deeply care about how accurately
-            language can represent my thoughts. It, which I care about, is a problem of my own. <span class="highlight">A Probabilistic trust model is
-            peaceful for the mind.</span> Every visual imagination is preceded by a sentence/word formation. Imagine a laughing
-            carrot. Language is just complicated action. Language, like light, is a physical stimulus. What we make out of it
-            are abstractions. I have an unbearable love for language and meaning. I feel it now as I form sentences. I deeply
-            desire to engage in conversations. Conversations that never happened. <span class="highlight">Philosophy exists in language space and hence
-            a philosopher should first understand language. Language is applied. Language is probabilistic.</span> One needs more
-            phrases to narrow down to a meaning/object that the set of phrases (or what the thinker) identifies. We see a color!
-            No! We just experience a color! A color is just an EM wave, a precursor, a cause of the experience which we call
-            color. Good and Evil are just categories and they don't have meaning at all. The totality of facts. I think we
-            rely a lot on language to propagate and represent knowledge. The reality "continues" to exist. I think solutions
-            to problems of love, philosophy, and truth can be found by understanding language! All meaning comes with language
-            and signs! There are no facts only interpretations! A fact is a language sentence and hence only a representation.
-            Fact Vs Reality. Learn your language game's rules! Language is the most important part of my life. Language is the
-            world. Choice of words merely endorses thoughts. But they dictate the direction of the message. Paradoxes are
-            problems of the language, not reality. Language is not blind. The last thing is clarity. This world is just
-            language and logic. <span class="highlight">Minds are private, not their expressions to the world.</span> People project their meaning into
-            texts.
-        </p>
-        <h3>Logic</h3>
-        <p class="text">
-            Bachelors are unmarried. Macro is a thinking style. <span class="highlight">Nothing is original except the whole!</span> Is reasoning necessary
-            if there is only a single being? Is logic the same in all simulations? The idea is to out-philosophize others.
-        </p>
-        
-        <h3>Value, Ethics, and Aesthetics</h3>
-        <p class="text">
-            Sometimes some ideas are so beautiful that you will momentarily accept and revere them before analyzing them. <span class="highlight">My
-            ethics will only ever be direct deductions from my metaphysics. All other accepted ethics will be rejected. Like
-            that of Schopenhauer!</span> You are a plague. Love. I want to understand how we assume value in things. Bias is different
-            but love is same. There is no meaning in this world. There are 2 cars and 5 pens in this world. Love is every experience you call love. 
-            Likewise, other emotions. I think it is only in the mind that one can love. I need a computer that can render love for me. 
-            Love is a man's truest and most creative expression. Access to storage is empowerment! Inspiration is more real than love! 
-            Confidence and Exploration depend on the type of sense of ownership! Government cannot control morals. <span class="highlight">Value arises from the contract. 
-            No value ever is not from some contract.</span> To love someone is an amazing painkiller, and a good night's sleep! 
-            Unlike geographies, thoughts aren't tactile and aren't limited, so publicness is not a responsibility in virtual groups. 
-            Respect is a protocol? or a feeling? I consider a drone as an organism. The alien within. It might be the case that God created us, but I don't think he cares about our morality. 
-            Value requires a valuer. It's morally wrong if you hurt any sentient being, and also it is morally wrong if you disrespectfully damage any nonliving tool you have. 
-            What is not boring? Is art boring? Not just humanity. Consciousness first. Bored while pooping. Practice more of what is important, what you love. 
-            It is very hard to focus without a purpose. You are my stakeholder. Creativity is not about control, it is about letting go. 
-            What makes beauty appealing is that it is useful.
-        </p>
-        <h3>Epistemology (About Knowledge)</h3>
-        <p class="text">
-            I don't know if any of the things I say are correct at all! I'm afraid, I don't even seem to understand the nature
-            of correctness at all. Did I ever prove anything in my life? I don’t know anything for certain; this feeling is
-            heavy, yet I will act. A Probabilistic trust model is peaceful for the mind. <span class="highlight"> My belief is my knowledge.</span> Is truth always inspiring? Truth is
-            important. Nonsense is everywhere. Learning and Knowledge are personal! It is our duty (and is an advantage) to
-            support the truth. Some truths are more important than food and money. <span class="highlight">Part of the truth is disliking, liking,
-            action, and inaction.</span> Education is all about equipping with tools.
-        </p>
-        <h3>Critical and Social</h3>
-        <p class="text">
-          <span class="highlight">A nation may brand itself as a unifying agent, but all nations, like all classes/categories, are divided by
-            definition.</span> My eyes look like that of a dead man. They are dull. But I like them. They show me this world and art.
-            Metaphysics is the presumption from which you derive all other studies! I want to have good conversations, I want to
-            be fearless. I am a free man. Commands are programs written by someone else. In company, you kill yourself. I don't
-            live in the real world. So, I can't thrive by usual standards. Freedom from god, freedom from bonds, and freedom
-            from the state are liberation from the external. Standing for oneself is the sexiest quality. Only compute-intensive
-            philosophies should try to reach more people for their brains. What is the difference between a nation and a social
-            group? I want to have good conversations, I want to be fearless. I think honesty helps you appreciate other honest
-            people. I deeply desire to engage in conversations. Conversations that never happened. I still stand on the fact
-            that doing philosophy is a luxury. Why nihilists won't suicide? <span class="highlight">In fact, everything is just a category/class.</span> They
-            don't have meaning at all. LED, Bus, Man, Taste,... I think we rely a lot on language to propagate and represent
-            knowledge. The reality "continues" to exist. I think I should fix the language. There is no freedom in the true
-            sense. I think it is important to listen to everyone's voice. One cannot understand what is wrong. Some people can
-            believe the wrong and also expect you to believe it. This isn't impossible. When you have infinite love, try loving
-            animals. Obviously, output depends on the tools used. Breaking laws makes bad laws clear. <span class="highlight">Plan in language space and
-            execute in action space.</span> Philosophy is not a belief system nor is it a knowledge system. Present your self-fatal
-            questions! There's nothing unique about being the world's tallest building. Some things are to be given to the most
-            dedicated, not necessarily to the best! It is empowerment to be able to do shit on the web! Statistically, it is
-            actually good for individuals to take the responsibility of learning certain knowledge whether or not it is useful
-            for them personally.<span class="highlight"> I love how world states and problems can be mathematically put.</span> How important is it to
-            understand the rules of society? How to frame society as a robotic system? Missed duties are more daunting than
-            missed opportunities. As long as I can afford quality food, health, shelter, internet, and time for friends I am
-            cool. I can just imagine other expensive shit! Society: Multiple intelligent swarms with plenty of independent
-            self-centric agents in them. With every word I type/say, I am feeling conscious that I'm using language. I don't
-            want to pay for any education! The foundation of any system = exploitation. Bring meme culture to political
-            relevance. Need for Alien Policy. When you learn a language, you change. All that is needed to do great work is to
-            do what you love. For me, India is a territory, not a specific people. The healthiest are the smartest. I have
-            nothing to do with any religion. To accelerate human evolution. One should be conscious enough to figure out if
-            they are in a dilemma. I go through multiple of them each day. Some noticed, some not. Altruists have no empathy
-            for themselves. Dextrousity gave us cognition. Common sense is social sense. <span class="highlight">Alienation is a real problem. Try not
-            to alienate others and try to familiarize yourself with alien situations.</span> Sociological Imagination can help you
-            appreciate that you are a part of society. Give people wonderful tools, and they will do wonderful things. <span class="highlight">I have a
-            dream to map the entire world in 3D and 4Pi.</span> Religion is an imagination. Any intelligent trade is a win-win. Self-
-            interest prevails. There is no such thing as a free lunch. Technological borders Nation-state borders. Overhauling
-            the status quo/society completely is not as hard as it immediately strikes. We are just changing the present, not
-            the whole history behind it. Ex: Question of God. It's not about learning the popular tools, it is about finding
-            the right tools for your use case. Everyone should become an entrepreneur. Without regular affirmation, you will
-            lose your patriotism. Curb hatred, and that's all. People can be freer without guns in their hands. <span class="highlight">Games create
-            strong social bonds.</span> You are simply your society/nation. Can unaddressed memories in a computer give it
-            consciousness? Each moment/iteration asks itself, what it should, where it should get its arguments from?... Is our brain discretely
-            functioning with time? We shouldn't be dismissive of bad ideas. <span class="highlight">Inference to the best explanation.</span> Humans are not
-            the center. You don't need to abuse the law as long as you understand the risk of not respecting it. One day I want
-            to be able to buy time. Apples, peaches, pears, and plums are all from the Rose family. IIT made me feel national;
-            Hyderabad made me feel national; Telugu made me feel national; Even Technology made me feel national. But,
-            Hinduism couldn't. Because it never really mattered to me as an INDIVIDUAL. Houses protect humans from other
-            animals. Society protects one human from the other humans. Treaties protect one society from the other. Only Culture
-            can protect society from itself and its wrongdoings. Democratizing every industry. <span class="highlight">No one's classical unless they
-            are taught to be.</span> Social will is created. Not yielded by the weight of society, I am a little strange. Labs are
-            prisons⛓. I can neither promise rights nor force duties in and on any society. I am just a developing animal. Love
-            the people of your nation. If you are classical, you are not understanding yourself. I am not just me but my
-            society, and I am selfish. Education is a tool, but every time you use it, it doesn't wear but grows. Consciousness,
-            I wish. A good teacher protects his students from his own influence. Once you start, you start enjoying. I plan only
-            to understand what's important to me. I think people need better feedback. Selfish gene. My child will be a cyborg.
-        </p>
-    </div>
-</section>
+            drawLandmarks() {
+                this.landmarks.forEach(landmark => {
+                    this.ctx.fillStyle = landmark.active ? '#FFD700' : '#BC13FE';
+                    this.ctx.beginPath();
+                    this.ctx.arc(
+                        landmark.x * this.canvas.width,
+                        landmark.y * this.canvas.height,
+                        landmark.active ? 4 : 2,
+                        0, Math.PI * 2
+                    );
+                    this.ctx.fill();
+                });
+            }
 
- -->
+            drawSensorRays() {
+                const maxSensorRange = 0.03;
 
-        
-    <!-- INSPIRATION SECTION  -->
-    <section id="I was influenced by">
-        <h2>I am strongly influenced by</h2>
-        <ol>
-          <li>Igor Irodov: Fundamental Laws of Mechanics</li>
-          <!-- <li>Mario Reinforcement Learning: Youtube Video</li> -->
-          <li>Ludwig Wittgenstein: About Language</li>
-          <!-- <li>Comma.ai George Hotz</li> -->
-          <!-- <li>Elon Musk: And all his Projects</li> -->
-          <!-- <li>Lex Fridman: Podcasts</li> -->
-          <!-- <li>Puri Jagannadh: Musings</li> -->
-          <!-- <li>Ramuism Series</li> -->
-          <!-- <li>Cyrill Stachniss and SLAM</li> -->
-          <!-- <li>My Math Tuition Teacher, Prof SK Saha, Prof Madhava Krishna</li> -->
-        </ol>
-      </section>
-      
-    <!-- DROP A MESSAGE SECTION  -->
-    <!-- <section id="message">
-        <h2>Drop a Message</h2>
-        <form>
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name"><br><br>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email"><br><br>
-          <label for="message">Message:</label><br>
-          <textarea id="message" name="message" rows="5" cols="30"></textarea><br><br>
-          <input type="submit" value="Send">
-        </form>
-      </section> -->
-      
+                this.ctx.strokeStyle = `rgba(0, 255, 255, 0.3)`;
+                this.ctx.lineWidth = 1.5;
 
+                this.landmarks.forEach(landmark => {
+                    const dx = landmark.x - this.robot.x;
+                    const dy = landmark.y - this.robot.y;
+                    const distance = dx * dx + dy * dy;
 
-                    <!-- Pop-up container for image -->
-      <div id="popup" class="popup">
-        <img id="popup-image" src="" alt="Popup Image">
-        <div id="popup-caption" class="popup-caption"></div> <!-- Caption container -->
-      </div>  
-      <script src="scripts.js"></script>
+                    if (distance < maxSensorRange) {
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(
+                            this.robot.x * this.canvas.width,
+                            this.robot.y * this.canvas.height
+                        );
+                        this.ctx.lineTo(
+                            landmark.x * this.canvas.width,
+                            landmark.y * this.canvas.height
+                        );
+                        this.ctx.stroke();
+                    }
+                });
+            }
 
-    </body>
+            drawTrail() {
+                this.robot.trail.forEach((pos, i) => {
+                    const alpha = i / this.robot.trail.length;
+                    this.ctx.beginPath();
+                    this.ctx.fillStyle = `rgba(15, 252, 120, ${alpha * 0.8})`;
+                    this.ctx.arc(
+                        pos.x * this.canvas.width,
+                        pos.y * this.canvas.height,
+                        3 * alpha,
+                        0, Math.PI * 2
+                    );
+                    this.ctx.fill();
+                });
+            }
 
+            drawRobot() {
+                this.ctx.fillStyle = '#0FFC78';
+                this.ctx.beginPath();
+                this.ctx.arc(
+                    this.robot.x * this.canvas.width,
+                    this.robot.y * this.canvas.height,
+                    this.robot.size,
+                    0, Math.PI * 2
+                );
+                this.ctx.fill();
+
+                this.ctx.strokeStyle = '#FFFFFF';
+                this.ctx.beginPath();
+                this.ctx.arc(
+                    this.robot.x * this.canvas.width,
+                    this.robot.y * this.canvas.height,
+                    this.robot.size * 1.3,
+                    Math.atan2(this.robot.vy, this.robot.vx) - Math.PI / 6,
+                    Math.atan2(this.robot.vy, this.robot.vx) + Math.PI / 6
+                );
+                this.ctx.stroke();
+            }
+
+            animate() {
+                this.update();
+                this.draw();
+                requestAnimationFrame(() => this.animate());
+            }
+
+            handleClick() {
+                document.body.style.opacity = 0;
+                setTimeout(() => {
+                    window.location.href = "webpage.html";  // Change this to your next page
+                }, 800);
+            }
+        }
+
+        new SLAMVisualizer();
+    </script>
+</body>
 </html>
+
