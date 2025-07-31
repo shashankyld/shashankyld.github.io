@@ -78,6 +78,31 @@ Maybe this can be done later, leave this for now
             body {
                 font-family: 'Monaco', monospace;
             }
+            
+            /* Experience Section Typography */
+            .experience-title {
+                font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+                font-weight: 700;
+                font-size: 1.4em;
+                color: #333;
+                margin: 0 0 8px 0;
+                line-height: 1.3;
+                display: block;
+            }
+            
+            .experience-company {
+                font-family: 'Georgia', 'Times New Roman', serif;
+                font-weight: 500;
+                font-size: 1.1em;
+                color: #1a73e8;
+                margin: 0 0 12px 0;
+                line-height: 1.2;
+                display: block;
+            }
+            
+            .experience-section .project-details h3 {
+                margin-bottom: 8px;
+            }
         </style>
         
     </head>
@@ -111,7 +136,7 @@ Maybe this can be done later, leave this for now
           <p>
             Masters Student @ University of Bonn | B.Tech in Mechanical Engineering @ IIT Delhi<br><br>
             <!-- I like to be free, I wish to live forever with 100 health.<br> -->
-            I'm interested in the future of SLAM, World Models, and their application in solving robotics.
+            I'm interested in the future of SLAM, all forms of augmented reality, world models, and their application in solving human and robotics problems.
           </p>
           
         </div>
@@ -142,7 +167,15 @@ Maybe this can be done later, leave this for now
         <div class="timeline">
           <h3>Recent Updates</h3>
           <ul>
-            <li data-image="Images/summerschool.png" data-caption="I attended the Summer School 2024 on Multi-Robot Systems, where I learned from top experts in the field. The program included lectures, hands-on computer tasks, and outdoor experiments with aerial robots. It was a great opportunity to apply my knowledge in real-world scenarios and connect with fellow students and researchers.">
+            <!-- One more point about completed Masters in Geodetic Engineering(Mobile Sensing and Robotics) from University of Bonn, Write that I graduated in July 2025 -->
+            <!-- <li data-image="Images/grad2.png" data-caption=""> -->
+            <li>  
+              <span class="date">July '25</span>
+              <p>Completed my <span class="highlight">Masters in Geodetic Engineering (Mobile Sensing and Robotics)</span> from the University of Bonn</p>
+            </li>
+
+            <!-- <li data-image="Images/summerschool.png" data-caption="I attended the Summer School 2024 on Multi-Robot Systems, where I learned from top experts in the field. The program included lectures, hands-on computer tasks, and outdoor experiments with aerial robots. It was a great opportunity to apply my knowledge in real-world scenarios and connect with fellow students and researchers."> -->
+            <li>
               <span class="date">August '24</span>
               <p>Attended the <span class="highlight">IEEE RAS Summer School on Multi-Robot Systems, Prague, Czech Republic</span></p>
             </li>
@@ -150,7 +183,7 @@ Maybe this can be done later, leave this for now
               <span class="date">Jun '24</span>
               <p>Joined <span class="highlight">Agrobotics Lab</span>, UniBonn as a <span class="highlight">Student Assistant</span></p>
             </li>
-            <li data-image="Images/apple.gif" data-caption="Worked on setting up Husky robot with multiple realsense cameras, GNSS receivers, and a Lidar using Docker.">
+            <li>
               <span class="date">Jan '23</span>
               <p>Joined <span class="highlight">Stachniss Lab</span>, UniBonn as a <span class="highlight">Student Assistant</span></p>
             </li>
@@ -158,15 +191,15 @@ Maybe this can be done later, leave this for now
               <span class="date">Oct '22</span>
               <p>(present) Joined Masters in <span class="highlight">Mobile Sensing & Robotics</span> at <span class="highlight">University of Bonn</span></p>
             </li>
-            <li data-image="Images/EWOK_Planner_for_PX4.gif" data-caption="I worked breifly at RRC, IIIT Hyderabad under Prof. Madhava Krishna as a student assistant where I worked on tasks ranging from assembling drones to testing various autonomous mapping/planning pipelines on the lab's drones">
+            <li>
               <span class="date">May '22</span>
               <p>Joined <span class="highlight">RRC</span> in <span class="highlight">IIIT-Hyderabad</span> as a <span class="highlight">Project Assistant</span></p>
             </li>
-            <li data-image="Images/IIT_Ground_3D_model.gif" data-caption="I joined a start-up incubation centre as a resident to build drones that can be used to build maps that can be used in construction/survey industries. I later realised that it is more optimal for me to pursue higher education in SLAM which will allow me build much better systems">
+            <li>
               <span class="date">Sept '22</span>
               <p>Joined <span class="highlight">IHFC</span> as a <span class="highlight">Research & Entrepreneurship Development Intern</span> (1st co-hort)</p>
             </li>
-            <li data-image="Images/Aerial_Manipulator.gif" data-caption="We developed a drone + manipulator system to pick and carry a payload of 500g. We implemented Auruco Marker detection and landing for this drone">
+            <li>
               <span class="date">Sept '22</span>
               <p>Joined <span class="highlight">Indo-Korea Joint Network on Robotics</span> as a <span class="highlight">Project Assistant</span> (IIT-Delhi)</p>
             </li>
@@ -174,15 +207,16 @@ Maybe this can be done later, leave this for now
               <span class="date">Jan '22</span>
               <p>Joined <span class="highlight">Vecros</span> (startup) as a <span class="highlight">Hardware Design Engineer</span></p>
             </li>
-            <li data-image="Images/Robomuse_5_0_Gmapping.gif" data-caption="For my thesis, I worked on implementing GMapping, AMCL for Robomuse, a diffrential robot. This involved assembling the robot and creating the URDF of the robot for simulation. This is the first time I got introduced to SLAM. But only later when I joined UniBonn, I grasped the relevant math.">
+            <li>
               <span class="date">June '21</span>
-              <p><span class="highlight">Graduated</span> with a <span class="highlight">Bachelors Degree</span> in Mechanical Engineering,IIT Delhi</p>
+              <p><span class="highlight">Graduated</span> with a <span class="highlight">Bachelors Degree</span> in Mechanical Engineering, IIT Delhi</p>
             </li>
-            <li data-image="Images/boeing.jpeg" data-caption="My Team won the 1st prize of ₹50,000 for designing a model aeroplane with the highest payload/weight ratio">
+            <li>
               <span class="date">May '19</span>
               <p>Assumed multiple leadership roles at <span class="highlight">Aeromodelling Club</span> - <span class="highlight">IIT Delhi</span></p>
             </li>
-            <li data-image="Images/disa.gif" data-caption="The aim of this project is to build a drone from scratch and inject a motor failure in the drone remotely - the long term vision is to solve safe landing in case of a motor failure, this is my first introduction to ROS and Drones. This research grant of ₹30,000 is awarded to students after shortlisting them based on thier proposal for a 8-week summer research program">
+            <!-- <li data-image="Images/disa.gif" data-caption="The aim of this project is to build a drone from scratch and inject a motor failure in the drone remotely - the long term vision is to solve safe landing in case of a motor failure, this is my first introduction to ROS and Drones. This research grant of ₹30,000 is awarded to students after shortlisting them based on thier proposal for a 8-week summer research program"> -->
+            <li>  
               <span class="date">May '18</span>
               <p>Awarded with <span class="highlight">Design Innovation Summer Award, 2018</span> - <span class="highlight">IIT Delhi</span></p>
             </li>
@@ -199,24 +233,28 @@ Maybe this can be done later, leave this for now
         <div class="personal-projects">
           <h3>Personal Projects</h3>
         
+
+           <div class="project">
+            <img src="Images/aria.gif" alt="Project 1 Result" class="project-image" style="width: 300px; height: auto;">
+            <div class="project-details">
+              <h3>Stereo Depth Completion for Aria Glasses [IN PROGRESS]</h3>
+              <p>Estimating Multiview Stereo Depth from slam cameras present on the Meta Aria Glasses .</p>
+                <p>Implemented differential camera models for Pinhole, Spherical, and Fisheye lenses. <a href="https://github.com/shashankyld/aria-stereo-depth-completion" target="_blank">View on GitHub</a></p>
+              <!-- <a href="https://github.com/shashankyld/aria-stereo-depth-completion" target="_blank" class="project-link">View on GitHub</a> -->
+            </div>
+          </div>
+
           <!-- Project 1 -->
           <div class="project">
             <img src="Images/gsslam.gif" alt="Project 1 Result" class="project-image" style="width: 300px; height: auto;">
             <div class="project-details">
-              <h3>RGB-D SLAM in Dynamic Environments using Segment Anything Model [IN PROGRESS]</h3>
+              <h3>RGB-D SLAM in Dynamic Environments using Segment Anything Model </h3>
               <p>Building a Map of the environment has been an important step in many downstream robotics tasks. Having a distractor free dense photorealistic map is now possible with GS and SAM. Note - Video shown is from GS-SLAM work.</p>
               <!-- <a href="https://github.com/shashankyld/MasterThesis" target="_blank" class="project-link">View on GitHub</a> -->
             </div>
           </div>
 
-          <div class="project">
-            <img src="Images/aria.gif" alt="Project 1 Result" class="project-image" style="width: 300px; height: auto;">
-            <div class="project-details">
-              <h3>Stereo Depth Completion for Aria Glasses [IN PROGRESS]</h3>
-              <p>Estimating Multiview Stereo Depth from slam cameras present on the Meta Aria Glasses .</p>
-              <!-- <a href="https://github.com/shashankyld/aria-stereo-depth-completion" target="_blank" class="project-link">View on GitHub</a> -->
-            </div>
-          </div>
+         
 
           
 
@@ -226,6 +264,15 @@ Maybe this can be done later, leave this for now
               <h3>Instance Completion and Motion Estimation with Deep Shape Priors for Autonomous Driving</h3>
               <p>The main contribution of this project is an object tracking and reconstruction approach that combines learned deep shape priors with classical 3D object detection for improved perception in autonomous driving.</p>
               <!-- <a href="https://github.com/shashankyld/Instance-Completion-and-Motion-Estimation-with-Deep-Shape-Priors-for-Autonomous-Driving-Presentation" target="_blank" class="project-link">View on GitHub</a> -->
+            </div>
+          </div>
+
+          <!-- Bachelor's Thesis Project -->
+          <div class="project">
+            <img src="Images/Robomuse_5_0_Gmapping.gif" alt="Robomuse SLAM Project" class="project-image" style="width: 300px; height: auto;">
+            <div class="project-details">
+              <h3>2D SLAM Implementation on Robomuse Robot</h3>
+              <p>I worked on implementing GMapping and AMCL for Robomuse, a differential robot. This involved assembling the robot and creating the URDF of the robot for simulation. This was the first time I got introduced to SLAM. But only later when I joined UniBonn, I grasped the relevant math.</p>
             </div>
           </div>
         
@@ -242,7 +289,89 @@ Maybe this can be done later, leave this for now
           <!-- Add more projects as needed -->
         </div>
         
-      
+
+        
+        <div class="experience-section" id="experience">
+          <h3>Professional Experience</h3>
+          
+          <!-- Stachniss Lab Experience -->
+          <div class="project">
+            <img src="Images/apple.gif" alt="Husky Robot Setup" class="project-image" style="width: 300px; height: auto;">
+            <div class="project-details">
+              <div class="experience-title">Student Assistant</div>
+              <div class="experience-company">Stachniss Lab, University of Bonn</div>
+              <p><strong>Duration:</strong> Jan '23 - Jan '24</p>
+              <p>Worked on setting up Husky robot with multiple RealSense cameras, GNSS receivers, and a Lidar using Docker. Contributed to advanced robotics research in photogrammetry and robotics.</p>
+            </div>
+          </div>
+
+          <!-- RRC IIIT Hyderabad Experience -->
+          <div class="project">
+            <img src="Images/EWOK_Planner_for_PX4.gif" alt="EWOK Planner Testing" class="project-image" style="width: 300px; height: auto;">
+            <div class="project-details">
+              <div class="experience-title">Project Assistant</div>
+              <div class="experience-company">Robotics Research Center, IIIT Hyderabad</div>
+              <p><strong>Duration:</strong> May '22 - Sept '22</p>
+              <p>Worked briefly at RRC, IIIT Hyderabad under Prof. Madhava Krishna as a student assistant where I worked on tasks ranging from assembling drones to testing various autonomous mapping/planning pipelines on the lab's drones.</p>
+            </div>
+          </div>
+
+          <!-- IHFC Experience -->
+          <div class="project">
+            <img src="Images/IIT_Ground_3D_model.gif" alt="3D Mapping Drone Project" class="project-image" style="width: 300px; height: auto;">
+            <div class="project-details">
+              <div class="experience-title">Research & Entrepreneurship Development Intern</div>
+              <div class="experience-company">IHFC</div>
+              <p><strong>Duration:</strong> Sept '22 - Oct '22</p>
+              <p>Joined a start-up incubation centre as a resident to build drones that can be used to build maps for construction/survey industries. Later realized that it is more optimal to pursue higher education in SLAM which will allow building much better systems.</p>
+            </div>
+          </div>
+
+          <!-- Indo-Korea Joint Network Experience -->
+          <div class="project">
+            <img src="Images/Aerial_Manipulator.gif" alt="Drone Manipulator System" class="project-image" style="width: 300px; height: auto;">
+            <div class="project-details">
+              <div class="experience-title">Project Assistant</div>
+              <div class="experience-company">Indo-Korea Joint Network on Robotics, IIT Delhi</div>
+              <p><strong>Duration:</strong> Sept '22 - Dec '22</p>
+              <p>Developed a drone + manipulator system to pick and carry a payload of 500g. Implemented ArUco Marker detection and landing for this drone system.</p>
+            </div>
+          </div>
+
+          <!-- Aeromodelling Club Experience -->
+          <div class="project">
+            <img src="Images/boeing.jpeg" alt="Aeromodelling Competition" class="project-image" style="width: 300px; height: auto;">
+            <div class="project-details">
+              <div class="experience-title">Leadership Roles</div>
+              <div class="experience-company">Aeromodelling Club, IIT Delhi</div>
+              <p><strong>Duration:</strong> May '19 - June '21</p>
+              <p>Assumed multiple leadership roles at Aeromodelling Club. My team won the 1st prize of ₹50,000 for designing a model aeroplane with the highest payload/weight ratio.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- TWEETS SECTION  -->
+
+<!--         <section id="tweets">
+            <h2>Tweets</h2>
+            <div class="tweet">
+              <img src="https://placehold.it/50x50" alt="Twitter profile picture">
+              <div class="tweet-content">
+                <p class="tweet-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac velit enim. Morbi ac lorem sapien.</p>
+                <p class="tweet-date">April 5, 2023</p>
+              </div>
+            </div>
+            <div class="tweet">
+              <img src="https://placehold.it/50x50" alt="Twitter profile picture">
+              <div class="tweet-content">
+                <p class="tweet-text">Pellentesque mollis lobortis augue, nec eleifend augue iaculis in. Praesent tincidunt enim elit, a tincidunt ex mollis vel.</p>
+                <p class="tweet-date">April 3, 2023</p>
+              </div>
+            </div>
+          </section>
+ -->
+                
         <div class="conference-papers">
           <h3>Publications</h3>
           
@@ -273,59 +402,19 @@ Maybe this can be done later, leave this for now
         </div>
         </section>
 
-        <!-- TWEETS SECTION  -->
-
-<!--         <section id="tweets">
-            <h2>Tweets</h2>
-            <div class="tweet">
-              <img src="https://placehold.it/50x50" alt="Twitter profile picture">
-              <div class="tweet-content">
-                <p class="tweet-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac velit enim. Morbi ac lorem sapien.</p>
-                <p class="tweet-date">April 5, 2023</p>
-              </div>
-            </div>
-            <div class="tweet">
-              <img src="https://placehold.it/50x50" alt="Twitter profile picture">
-              <div class="tweet-content">
-                <p class="tweet-text">Pellentesque mollis lobortis augue, nec eleifend augue iaculis in. Praesent tincidunt enim elit, a tincidunt ex mollis vel.</p>
-                <p class="tweet-date">April 3, 2023</p>
-              </div>
-            </div>
-          </section>
- -->
-
-     <!-- Some Useful Links  -->
-     <section id="Useful Links for Building Software for Robots">
-      <h3>Useful Links for Building Software for Robots</h3>
-      <ol>
-        <li><a href="http://vision.stanford.edu/teaching/cs131_fall1617/lectures/lecture2_linalg_review_cs131_2016.pdf">Linear Algebra Primer</a></li>
-        <li><a href="http://immersivemath.com/ila/index.html">Immersive Linear Algebra - By by Ström, Åström, and Akenine-Möller</a></li>
-        <li><a href="https://rpg.ifi.uzh.ch/docs/teaching/2024/FurgaleTutorial.pdf">Representing Robot Pose: The good, the bad, and the ugly - By Paul Furgale (ETH Zurich) </a></li>
-        <li><a href="https://rpg.ifi.uzh.ch/teaching.html">Fall 2024 - Vision Algorithms for Mobile Robotics</a>
-        <li><a href="https://www.ipb.uni-bonn.de/teaching/index.html">Courses from IPB - UniBonn</a>
-        <li><a href="https://www.youtube.com/watch?v=8Rbvfq2Xd2E">Intro to Lie Theory for Robotics</a>
-        <li><a href="https://udlbook.github.io/udlbook/">Understanding Deep Learning - Simon J.D. Prince</a>
-        <li><a href="https://github.com/SLAM-Handbook-contributors/slam-handbook-public-release/blob/main/main.pdf">The SLAM Handbook - Coming Soon</a>
-        <li><a href="https://krrish94.github.io/assets/pdf/thesis_krishna.pdf">Differential World Models - Krishna Murthy Jatavallabhula</a>
-        <li><a href="https://arxiv.org/pdf/2405.17247v1">Intro to Vision-Language Modelling</a>
-      </ol>
-    </section>
-         <!-- Some Useful Links  -->
-         <section id="Other Useful Textbooks">
-          <h3>Other Useful Textbooks</h3>
-          <ol>
-            <li><a href="http://digamo.free.fr/antitext.pdf">The Economics Anti-Textbook</a></li>
-          </ol>
-        </section>
-
-         <!-- Some Useful Links  -->
-         <section id="Some cool companies in this space">
-          <h3>Checkout these companies</h3>
-          <ol>
-            <li><a href="https://odyssey.systems/introducing-explorer">Odyssey Systems</a></li>
-            <li><a href="https://www.worldlabs.ai/">World Labs</a>
-          </ol>
-        </section>
+<section id="My previous startup experience">
+  <h3>My previous startup experience</h3>
+  <!--  Text - Bullet Points -->
+    <ul>
+      <li>Co-founded a robotics startup developing inspection drones for industrial applications.</li>
+      <li>Designed and implemented Aruco marker-based autonomous landing.</li>
+      <li>Secured grants for hardware prototyping and software development at IIT Delhi.</li>
+      <li>Evaluated multiple 3D reconstruction and mapping techniques using drone captured data.</li>
+    </ul>
+  <div class="canva-container"></div>
+    <iframe src="https://www.canva.com/design/DAGuvO0wajA/2zoclcYvPaC9ipyY7YZwQA/view?embed" width="800" height="600" style="border:none;" allowfullscreen="allowfullscreen"></iframe>
+  </div>
+</section>
 <!-- 
 <section id="Personal Aphorisms">
     <h2>Personal Aphorisms</h2>
