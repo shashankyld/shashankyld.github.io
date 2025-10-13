@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLAM Containment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a12;
+            overflow: hidden;
+            transition: opacity 0.8s ease-out;
+        }
+
+        canvas {
+            display: block;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .interaction-hint {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.6);
+            font-family: 'Courier New', monospace;
+            font-size: 40px;
+            font-weight: 300;
+            pointer-events: none;
+            opacity: 0;
+            animation: hintFadeIn 2s ease-out 1s forwards, hintPulse 3s ease-in-out 3s infinite;
+        }
+
+        .interaction-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .interaction-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #0FFC78;
+            animation: dotPulse 1.5s ease-in-out infinite;
+        }
+
+        .interaction-dot:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .interaction-dot:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes hintFadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes hintPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { 
+                opacity: 0.4;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="slamCanvas"></canvas>
+    
+    <!-- Subtle interaction hint -->
+    <div class="interaction-hint">
+        <div class="interaction-dots">
+            <div class="interaction-dot"></div>
+            <div class="interaction-dot"></div>
+            <div class="interaction-dot"></div>
+        </div>
+        <span>INTERACT</span>
+    </div>
+
+    <script>
+        class SLAMVisualizer {
+            constructor() {
+                this.canvas = document.getElementById('slamCanvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.robot = {
+                    x: 0.5,
+                    y: 0.5,
+                    vx: 0.0035,
+                    vy: 0.0045,
+                    size: 12,
+                    trail: []
+                };
+                this.landmarks = [];
+                this.mouse = { x: -1, y: -1 };
+                this.init();
+            }
+
+            init() {
+                this.resizeCanvas();
+                window.addEventListener('resize', () => this.resizeCanvas());
+                this.canvas.addEventListener('mousemove', (e) => this.setMousePosition(e));
+                document.body.addEventListener('click', () => this.handleClick());  // Switch page on click
+                
+                this.generateLandmarks();
+                this.animate();
+            }
+
+            generateLandmarks() {
+                for (let i = 0; i < 80; i++) {
+                    this.landmarks.push({
+                        x: Math.random(),
+                        y: Math.random(),
+                        active: false
+                    });
+                }
+            }
+
+            setMousePosition(e) {
+                const rect = this.canvas.getBoundingClientRect();
+                this.mouse.x = (e.clientX - rect.left) / this.canvas.width;
+                this.mouse.y = (e.clientY - rect.top) / this.canvas.height;
+            }
+
+            resizeCanvas() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            }
+
+            update() {
+                if (this.mouse.x >= 0 && this.mouse.y >= 0) {
+                    const dx = this.robot.x - this.mouse.x;
+                    const dy = this.robot.y - this.mouse.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 0.25) {
+                        const avoidanceForce = 0.03 * (1 - dist / 0.25);
+                        this.robot.vx += dx * avoidanceForce;
+                        this.robot.vy += dy * avoidanceForce;
+                    }
+                }
+
+                const speed = Math.sqrt(this.robot.vx * this.robot.vx + this.robot.vy * this.robot.vy);
+                const maxSpeed = 0.015;
+                if (speed > maxSpeed) {
+                    this.robot.vx = (this.robot.vx / speed) * maxSpeed;
+                    this.robot.vy = (this.robot.vy / speed) * maxSpeed;
+                }
+
+                this.robot.x += this.robot.vx;
+                this.robot.y += this.robot.vy;
+
+                if (this.robot.x < 0 || this.robot.x > 1) {
+                    this.robot.vx *= -1;
+                    this.robot.x = Math.max(0, Math.min(1, this.robot.x));
+                }
+                if (this.robot.y < 0 || this.robot.y > 1) {
+                    this.robot.vy *= -1;
+                    this.robot.y = Math.max(0, Math.min(1, this.robot.y));
+                }
+
+                this.robot.trail.push({ x: this.robot.x, y: this.robot.y });
+                if (this.robot.trail.length > 120) this.robot.trail.shift();
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.drawGrid();
+                this.drawLandmarks();
+                this.drawSensorRays();
+                this.drawTrail();
+                this.drawRobot();
+            }
+
+            drawGrid() {
+                const gridSize = 18;
+                this.ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+                this.ctx.lineWidth = 0.5;
+
+                for (let i = 0; i <= gridSize; i++) {
+                    const pos = i / gridSize;
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(pos * this.canvas.width, 0);
+                    this.ctx.lineTo(pos * this.canvas.width, this.canvas.height);
+                    this.ctx.stroke();
+
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(0, pos * this.canvas.height);
+                    this.ctx.lineTo(this.canvas.width, pos * this.canvas.height);
+                    this.ctx.stroke();
+                }
+            }
+
+            drawLandmarks() {
+                this.landmarks.forEach(landmark => {
+                    this.ctx.fillStyle = landmark.active ? '#FFD700' : '#BC13FE';
+                    this.ctx.beginPath();
+                    this.ctx.arc(
+                        landmark.x * this.canvas.width,
+                        landmark.y * this.canvas.height,
+                        landmark.active ? 4 : 2,
+                        0, Math.PI * 2
+                    );
+                    this.ctx.fill();
+                });
+            }
+
+            drawSensorRays() {
+                const maxSensorRange = 0.03;
+
+                this.ctx.strokeStyle = `rgba(0, 255, 255, 0.3)`;
+                this.ctx.lineWidth = 1.5;
+
+                this.landmarks.forEach(landmark => {
+                    const dx = landmark.x - this.robot.x;
+                    const dy = landmark.y - this.robot.y;
+                    const distance = dx * dx + dy * dy;
+
+                    if (distance < maxSensorRange) {
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(
+                            this.robot.x * this.canvas.width,
+                            this.robot.y * this.canvas.height
+                        );
+                        this.ctx.lineTo(
+                            landmark.x * this.canvas.width,
+                            landmark.y * this.canvas.height
+                        );
+                        this.ctx.stroke();
+                    }
+                });
+            }
+
+            drawTrail() {
+                this.robot.trail.forEach((pos, i) => {
+                    const alpha = i / this.robot.trail.length;
+                    this.ctx.beginPath();
+                    this.ctx.fillStyle = `rgba(15, 252, 120, ${alpha * 0.8})`;
+                    this.ctx.arc(
+                        pos.x * this.canvas.width,
+                        pos.y * this.canvas.height,
+                        3 * alpha,
+                        0, Math.PI * 2
+                    );
+                    this.ctx.fill();
+                });
+            }
+
+            drawRobot() {
+                this.ctx.fillStyle = '#0FFC78';
+                this.ctx.beginPath();
+                this.ctx.arc(
+                    this.robot.x * this.canvas.width,
+                    this.robot.y * this.canvas.height,
+                    this.robot.size,
+                    0, Math.PI * 2
+                );
+                this.ctx.fill();
+
+                this.ctx.strokeStyle = '#FFFFFF';
+                this.ctx.beginPath();
+                this.ctx.arc(
+                    this.robot.x * this.canvas.width,
+                    this.robot.y * this.canvas.height,
+                    this.robot.size * 1.3,
+                    Math.atan2(this.robot.vy, this.robot.vx) - Math.PI / 6,
+                    Math.atan2(this.robot.vy, this.robot.vx) + Math.PI / 6
+                );
+                this.ctx.stroke();
+            }
+
+            animate() {
+                this.update();
+                this.draw();
+                requestAnimationFrame(() => this.animate());
+            }
+
+            handleClick() {
+                document.body.style.opacity = 0;
+                setTimeout(() => {
+                    window.location.href = "index_alfolio.html";  // Change this to your next page
+                }, 800);
+            }
+        }
+
+        new SLAMVisualizer();
+    </script>
+</body>
+</html>
+
