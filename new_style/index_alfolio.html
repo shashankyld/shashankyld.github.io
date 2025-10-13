@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shashank Dammalapati</title>
+    <meta name="description" content="A simple, whitespace theme for academics. Based on al-folio design.">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style_alfolio.css">
+    <link rel="icon" href="../Images/shashank_red.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">
+                <span class="font-weight-bold">Shashank</span> Dammalapati
+            </a>
+            
+            <div class="navbar-toggle" id="navbar-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="navbar-nav" id="navbar-nav">
+                <li><a href="#about" class="nav-link active" data-section="about">About</a></li>
+                <li><a href="#news" class="nav-link" data-section="news">News</a></li>
+                <li><a href="#publications" class="nav-link" data-section="publications">Publications</a></li>
+                <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+                <li><a href="#competitions" class="nav-link" data-section="competitions">Competitions</a></li>
+                <li><a href="#interests" class="nav-link" data-section="interests">Interests</a></li>
+                <li><a href="#aphorisms" class="nav-link" data-section="aphorisms">Aphorisms</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle between light and dark theme">
+                        <i class="fas fa-sun theme-icon theme-icon-light"></i>
+                        <i class="fas fa-moon theme-icon theme-icon-dark"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <main class="main-content">
+            
+            <!-- About Section -->
+            <section id="about" class="content-section active">
+                <div class="post">
+                    <header class="post-header">
+                        <h1 class="post-title">
+                            <span class="font-weight-bold">Shashank</span> Dammalapati
+                        </h1>
+                        <!-- <p class="desc">MS in Geodetic Engineering • University of Bonn</p> -->
+                    </header>
+
+                    <article>
+                        <!-- Profile Section -->
+                        <div class="profile">
+                            <img src="../Images/shashank.jpeg" alt="Shashank Dammalapati" class="img-fluid rounded-circle">
+                            <div class="more-info">
+                                <!-- <p><strong>Email:</strong> shashank.dammalapati@example.com</p>
+                                <p><strong>Location:</strong> Bonn, Germany</p>
+                                 -->
+                                <!-- Social Icons -->
+                                <div class="social">
+                                    <a href="https://github.com/shashankyld" target="_blank" aria-label="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://scholar.google.com/citations?user=fLnKN7YAAAAJ&hl=en" target="_blank" aria-label="Google Scholar">
+                                    <i class="fab fa-google"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/shashank-dammalapati-03169b145/" target="_blank" aria-label="LinkedIn">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <!-- <a href="https://twitter.com/sha0nk" target="_blank" aria-label="Twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="https://www.instagram.com/shashank4pi/" target="_blank" aria-label="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="https://open.spotify.com/show/6cfYcoQQenVXiGFyxjWpWr" target="_blank" aria-label="Spotify">
+                                        <i class="fab fa-spotify"></i>
+                                    </a> -->
+                                    <!-- email -->
+                                    <a href="mailto:shashankyld@gmail.com" target="_blank" aria-label="Email">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix">
+                            <p>
+                                M.Sc in Geodetic Engineering (Mobile Sensing and Robotics) @ 
+                                <a href="https://www.igg.uni-bonn.de/en?set_language=en" target="_blank" rel="noopener">IGG, University of Bonn</a>
+                            </p>
+
+                            <!-- Hello, I am Masters Student at University of Bonn Advised by Starry(https://www.ipb.uni-bonn.de/people/xingguang-zhong/index.html) , Yue Pan(https://yuepanedward.github.io/About) under Cyrill Stachniss (https://www.ipb.uni-bonn.de/people/cyrill-stachniss/index.html)-->
+                            <p>
+                                Hello, I am a Master's student at the University of Bonn, advised by 
+                                <a href="https://www.ipb.uni-bonn.de/people/xingguang-zhong/index.html" target="_blank" rel="noopener">Xingguang Zhong</a>, 
+                                <a href="https://yuepanedward.github.io/About" target="_blank" rel="noopener">Yue Pan</a>, and 
+                                <a href="https://www.ipb.uni-bonn.de/people/cyrill-stachniss/index.html" target="_blank" rel="noopener">Cyrill Stachniss</a>.
+                                Prior to this, I completed my B.Tech in Mechanical Engineering from 
+                                <a href="https://www.iitd.ac.in/" target="_blank" rel="noopener">Indian Institute of Technology Delhi</a>, 
+                                where I was advised by 
+                                <a href="https://sksaha.com/" target="_blank" rel="noopener">SK Saha</a>.
+                            </p>
+
+                            <p>My current research interests are focused on exploring the next generation of SLAM systems and how they can be architected to build hierarchical, complete, and composable scene representations. 
+                                I am excited to investigate the use of generative priors to ensure these representations are complete, and I want to explore how multimodal foundation models can achieve task-based resolution, 
+                                allowing a system to understand its environment with adaptive fidelity.
+</p><p>
+                                The core of the research I wish to pursue is centered on point-based representations, and I am particularly interested in exploring how 3D point tracking can serve 
+                                as a unified primitive for modeling everything from the static scene to articulated objects and dynamic flow. Furthermore, I aim to leverage the inherent flexibility of point-based methods, 
+                                which allows for efficient map deformation after loop closures. I am keen to investigate how each point can act as a carrier for rich features that, supervised by sensor observations, foundation models, 
+                                regress to continuous scene properties like local geometry and appearance, ultimately creating a truly dynamic and intelligent world model.</p>
+
+
+                            <h3>Research Interests</h3>
+                            <ul>
+                                <li>SLAM</li>
+                                <li>Scene Representations</li>
+                                <li>3D/4D Scene Understanding</li>
+                                <li>World Models and Spatial AI</li>                        
+                            </ul>
+
+                            <h3>Featured Projects</h3>
+                            <div class="featured-projects">
+                                <div class="project-highlight">
+                                    <div class="project-content">
+                                        <h4>RGB-D SLAM in Dynamic Environments using Segment Anything Model</h4>
+                                        <p>Using Keypoint Tracking, Delaunay Triangulation, Geometric properties of rigid bodies, and SAM for dynamic RGBD SLAM.</p>
+                                    </div>
+                                    <div class="project-media">
+                                        <video controls loop muted preload="metadata">
+                                            <source src="../Images/thesis_video.mp4" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </div>
+                                </div>
+                                
+                                <div class="project-highlight">
+                                    <div class="project-content">
+                                        <h4>Instance Completion and Motion Estimation with Deep Shape Priors for Autonomous Driving</h4>
+                                        <p>Utilizing DeepSDF as shape priors to improve 3D object detection. This improved Motion Estimation and Shape Completion</p>
+                                    </div>
+                                    <div class="project-media">
+                                        <img src="../Images/shapeandmotionestimation.gif" alt="Shape and Motion Estimation Demo" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <blockquote>
+                                <p>"I have a dream to map the entire world."</p>
+                            </blockquote>
+                            
+                            <p>I am strongly influenced by the fundamental laws of mechanics (Igor Irodov) and philosophical thoughts on language and representation (Ludwig Wittgenstein).</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- News Section -->
+            <section id="news" class="content-section">
+                <div class="post">
+                    <header class="post-header">
+                        <h1 class="post-title">News</h1>
+                    </header>
+
+                    <div class="news">
+                        <div class="news-item">
+                            <div class="news-date">Jul 2025</div>
+                            <div class="news-content">
+                                <strong>Graduated!</strong> Completed Masters in Geodetic Engineering (Mobile Sensing and Robotics) from the University of Bonn.
+                            </div>
+                        </div>
+                        
+                        <div class="news-item">
+                            <div class="news-date">Aug 2024</div>
+                            <div class="news-content">
+                                Attended the <strong>IEEE RAS Summer School on Multi-Robot Systems</strong> in Prague, Czech Republic.
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="news-item">
+                            <div class="news-date">Jan 2023</div>
+                            <div class="news-content">
+                                Started working as a <strong>Student Assistant</strong> at Stachniss Lab, University of Bonn.
+                            </div>
+                        </div>
+                        
+                        <div class="news-item">
+                            <div class="news-date">Oct 2022</div>
+                            <div class="news-content">
+                                Started <strong>Masters in Geodetic Engineering</strong> at University of Bonn, Germany.
+                            </div>
+                        </div>
+                        <!--  IHFC - Research and Entrepreneurship Intern - Sep2021 -->
+                        <div class="news-item">
+                            <div class="news-date">Sep 2021</div>
+                            <div class="news-content">
+                                Worked as a <strong>Research and Entrepreneurship Intern</strong> at IHFC.
+                            </div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-date">June 2021</div>
+
+                            <div class="news-content">
+                                Graduated! Completed B.Tech in Mechanical Engineering from IIT Delhi, India.
+                            </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Publications Section -->
+            <section id="publications" class="content-section">
+                <div class="post">
+                    <header class="post-header">
+                        <h1 class="post-title">Publications</h1>
+                    </header>
+
+                    <div class="publications">
+                        <div class="publication">
+                            <h3 class="publication-title">
+                                <a href="https://ieeexplore.ieee.org/abstract/document/9828332" target="_blank">
+                                    Development of an Autonomous UAV Integrated with a Manipulator and a Soft Gripper
+                                </a>
+                            </h3>
+                            <p class="publication-authors">
+                                Debadrata Sarkar, Aman Arora, Soumen Sen, Sree SS Katta, <strong>D Shashank</strong>, M Rohan, Subir K Saha
+                            </p>
+                            <p class="publication-venue">
+                                13th Asian Control Conference (ASCC), 2022
+                            </p>
+                            <!-- <p class="publication-abstract">
+                                This paper presents the development of an autonomous UAV system integrated with a manipulator and soft gripper for precise object manipulation tasks in various environments.
+                            </p> -->
+                        </div>
+
+                        <div class="publication">
+                            <h3 class="publication-title">
+                                <a href="https://ieeexplore.ieee.org/abstract/document/9828119" target="_blank">
+                                    Aeromechanical Design and Analysis of H-Drone Configuration
+                                </a>
+                            </h3>
+                            <p class="publication-authors">
+                                D Dwarakanathan, S Raja, P Shanmugam, <strong>D Shashank</strong>, M Rohan, C Selvam, R Sanjeeth Kevin, Sree SS Katta, Subir K Saha
+                            </p>
+                            <p class="publication-venue">
+                                13th Asian Control Conference (ASCC), 2022
+                            </p>
+                            <!-- <p class="publication-abstract">
+                            </p> -->
+                        </div>
+
+                        <div class="publication">
+                            <h3 class="publication-title">
+                                <a href="https://ieeexplore.ieee.org/abstract/document/9828198" target="_blank">
+                                    3D pure pursuit guidance of drones for autonomous precision landing
+                                </a>
+                            </h3>
+                            <p class="publication-authors">
+                                Kaushal Kishore, Sagar Dalai, Yash Jangir, Samarth Singh, M Rohan, <strong>D Shashank</strong>, Sree SS Katta, Subir K Saha
+                            </p>
+                            <p class="publication-venue">
+                                13th Asian Control Conference (ASCC), 2022
+                            </p>
+                            <!-- <p class="publication-abstract">
+                            </p> -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="content-section">
+                <div class="post">
+                    <header class="post-header">
+                        <h1 class="post-title">Projects</h1>
+                    </header>
+
+                    <div class="projects">
+                        <div class="project-grid">
+                            <div class="project-card">
+                                <img src="../Images/grad.jpeg" alt="GS-SLAM" class="project-image">
+                                <div class="project-content">
+                                    <h3 class="project-title">RGBD SLAM for Dynamic Scenes</h3>
+                                    <p class="project-description">
+                                        Detected dynamic points in a Keypoint SLAM and used SAM2 to segment and track open-set objects for improved SLAM robustness.
+                                    </p>
+                                    <!-- <div class="project-links">
+                                        <a href="#" class="project-link">github</a>
+                                        <a href="#" class="project-link">demo</a>
+                                    </div> -->
+                                </div>
+                            </div>
+
+                            <div class="project-card">
+                                <img src="../Images/shapeandmotionestimation.gif" alt="Shape and Motion Estimation" class="project-image">
+                                <div class="project-content">
+                                    <h3 class="project-title">Shape and Motion Estimation</h3>
+                                    <p class="project-description">
+                                        Leveraged DeepSDF as shape priors to enhance 3D object detection, leading to improved motion estimation and shape completion in autonomous driving scenarios.
+                                    </p>
+                                    <!-- <div class="project-links">
+                                        <a href="#" class="project-link">github</a>
+                                        <a href="#" class="project-link">paper</a>
+                                    </div> -->
+                                </div> 
+                            </div> 
+
+                            <div class="project-card">
+                                <img src="../Images/EWOK_Planner_for_PX4.gif" alt="EWOK Planner" class="project-image">
+                                <div class="project-content">
+                                    <h3 class="project-title">EWOK Planner for PX4</h3>
+                                    <p class="project-description">
+                                        Integration of EWOK trajectory planner with PX4 autopilot for autonomous drone navigation in cluttered environments.
+                                    </p>
+                                    <!-- <div class="project-links">
+                                        <a href="#" class="project-link">github</a>
+                                        <a href="#" class="project-link">paper</a>
+                                    </div> -->
+                                </div>
+                            </div>
+
+                            <div class="project-card">
+                                <img src="../Images/Aerial_Manipulator.gif" alt="Aerial Manipulator" class="project-image">
+                                <div class="project-content">
+                                    <h3 class="project-title">Aerial Manipulator System</h3>
+                                    <p class="project-description">
+                                        Development of an autonomous UAV with integrated manipulator.
+                                    </p>
+                                    <!-- <div class="project-links">
+                                        <a href="#" class="project-link">github</a>
+                                        <a href="#" class="project-link">video</a>
+                                    </div> -->
+                                </div>
+                            </div>
+
+                            <div class="project-card">
+                                <img src="../Images/IIT_Ground_3D_model.gif" alt="3D Campus Model" class="project-image">
+                                <div class="project-content">
+                                    <h3 class="project-title">IIT Delhi 3D Campus Model</h3>
+                                    <p class="project-description">
+                                        Designed and prototyped a drone system to capture aerial images and generate a 3D model of the IIT Delhi campus using photogrammetry.
+                                    </p>
+                                    <!-- <div class="project-links">
+                                        <a href="#" class="project-link">github</a>
+                                        <a href="#" class="project-link">model</a>
+                                    </div> -->
+                                </div>
+                            </div>
+
+                            <div class="project-card">
+                                <img src="../Images/Robomuse_5_0_Gmapping.gif" alt="RoboMuse" class="project-image">
+                                <div class="project-content">
+                                    <h3 class="project-title">RoboMuse 5.0</h3>
+                                    <p class="project-description">
+                                       Worked on a differential ground robot with ROS navigation stack and SLAM for autonomous navigation in indoor environments.
+                                    </p>
+                                    <!-- <div class="project-links">
+                                        <a href="#" class="project-link">github</a>
+                                        <a href="#" class="project-link">docs</a>
+                                    </div> -->
+                                </div>
+                            </div>
+
+                            <!--  Detection of motor failure in a drone - DISA project -->
+                            <div class="project-card">
+                                <img src="../Images/disa.gif" alt="DISA Drone" class="project-image">
+                                <div class="project-content">
+                                    <h3 class="project-title">Detection of Motor Failure in Drones</h3>
+                                    <p class="project-description">
+                                        Detecting motor/propeller failure in a quadcopter using motor RPM and IMU data.
+                                    </p>
+                                    <!-- <div class="project-links">
+                                        <a href="#" class="project-link">github</a>
+                                        <a href="#" class="project-link">report</a>
+                                    </div> -->
+                                </div>
+                            
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+                        <!-- Competitions Section -->
+            <section id="competitions" class="content-section">
+                <div class="post">
+                    <header class="post-header">
+                        <h1 class="post-title">competitions</h1>
+                        <p class="desc">Achievements in national competitions</p>
+                    </header>
+
+                    <div class="competitions">
+                        <div class="competition-item">
+                            <div class="competition-image">
+                                <img src="../Images/BNAC2019.jpeg" alt="BNAC 2019 Competition" loading="lazy">
+                            </div>
+                            <div class="competition-content">
+                                <h3>BNAC 2019 - 1st Place</h3>
+                                <p><strong>National Aeromodelling Competition</strong></p>
+                                <p>Won 1st place in the National Aeromodelling Competition conducted by Boeing at IIT Madras, India in 2019. Our team emerged victorious out of 100+ teams that participated in this competition.</p>
+                            </div>
+                        </div>
+
+                        <div class="competition-item">
+                            <div class="competition-image">
+                                <img src="../Images/AMTI.jpg" alt="AMTI Mathematical Olympiad" loading="lazy">
+                            </div>
+                            <div class="competition-content">
+                                <h3>AMTI 2013 - All India Rank 11</h3>
+                                <p><strong>Mathematical Olympiad</strong></p>
+                                <p>Secured All India Rank 11 in the Mathematical Olympiad conducted by The Association of Mathematics Teachers of India (AMTI), demonstrating strong problem-solving and mathematical reasoning skills.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Personal Aphorisms Section -->
+            <section id="aphorisms" class="content-section">
+                <div class="post">
+                    <header class="post-header">
+                        <h1 class="post-title">Personal Aphorisms</h1>
+                        <p class="desc">A collection of thoughts, reflections, and philosophical musings</p>
+                    </header>
+
+                    <div class="aphorisms">
+                        <h2>Metaphysics (About Reality)</h2>
+                        <ul>
+                            <li>Particles are the Objects, Forces are the Plugins, and World as a Simulation.</li>
+                            <!-- <li>A mirror is a sensor.</li> -->
+                            <li>Manipulating knowledge (let's say thinking) is indirectly manipulating some physical system.</li>
+                            <!-- <li>In a simulation, we try to minimize the possibilities so that our computational power will not go short.</li> -->
+                            <li>Metaphysical Hypothesis: You are a computer.</li>
+                            <li>Thinking is Simulating. Experiencing is Living.</li>
+                            <!-- <li>I believe our whole God's systems are simulating entities in clusters, looping individual items' instantiations relatively at times and places closer to their cluster-mates.</li> -->
+                            <li>Space has no grid.</li>
+                            <li>Metaphysics is the presumption from which you derive all other studies!</li>
+                            <li>Resistance is your true self.</li>
+                            <!-- <li>Maybe I am just mechanical. God is a waste of time. Philosophy is mental work. Thinking is Hallucinating. and Hallucinating is Thinking. In retrospect, everything was a metaphor. Who picks the random?</li> -->
+                            <!-- <li>Ideas infect!</li> -->
+                            <li>Some phenomena are explained by cause, and some by purpose!</li>
+                            <li>All prophets fail.</li>
+                            <!-- <li>Unlike geographies, thoughts aren't tactile and aren't limited. So publicness is not a responsibility in virtual groups.</li> -->
+                            <!-- <li>I can decide what to write so I have free will. Can I be wrong here?</li> -->
+                            <li>Traveling through space, time, and memories.</li>
+                            <li>Imagine food with morally bad taste.</li>
+                            <li>Properties of "I" are too local and temporal for it to be eternal and independent of physical nature.</li>
+                            <li>There is no "I", There is no "You", We are just hosts of information, ideas, and genes.</li>
+                            <!-- <li>We live in a story that our brain tells itself. Basically, a dream.</li> -->
+                            <li>I am a bunch of ideas.</li>
+                            <li>I don't have ideas, ideas have me.</li>
+                            <li>Some ideas are more viral than others.</li>
+                            <li>Ideas influence ideas.</li>
+                            <li>Brains and humans are just containers.</li>
+                            <li>Nature, we are.</li>
+                            <li>I am this world.</li>
+                            <!-- <li>Consciousness transcends time.</li> -->
+                            <li>Little closer to nothingness.</li>
+                            <li>Illusions aren't necessarily bad.</li>
+                            <li>Not who I was, not who I will be. I am is.</li>
+                        </ul>
+
+                        <h2>Language (About its nature and application)</h2>
+                        <ul>
+                            <li>Philosophy exists in language space and hence a philosopher should first understand language. Language is applied. Language is probabilistic.</li>
+                            <li>A Probabilistic trust model is peaceful for the mind.</li>
+                            <li>Language, like light, is a physical stimulus. What we make out of it are abstractions.</li>
+                            <li>One needs more phrases to narrow down to a meaning/object that the set of phrases (or what the thinker) identifies.</li>
+                            <li>We see a color! No! We just experience a color! A color is just an EM wave, a precursor, a cause of the experience which we call color.</li>
+                            <li>Every visual imagination is preceded by a sentence/word formation. Imagine a laughing carrot.</li>
+                            <li>This world is just language and logic.</li>
+                            <li>Language is just complicated action.</li>
+                            <li>I consider every word I utter and every sentence I write equivalent to any other action I perform. Like walking and kicking a bag.</li>
+                            <li>I do not care how people understand my thoughts, I only deeply care about how accurately language can represent my thoughts. It, which I care about, is a problem of my own.</li>
+                            <li>I have an unbearable love for language and meaning. I feel it now as I form sentences. I deeply desire to engage in conversations. Conversations that never happened.</li>
+                            <li>Good and Evil are just categories and they don't have meaning at all.</li>
+                            <li>The totality of facts.</li>
+                            <li>I think we rely a lot on language to propagate and represent knowledge.</li>
+                            <li>The reality "continues" to exist.</li>
+                            <li>I think solutions to problems of love, philosophy, and truth can be found by understanding language!</li>
+                            <li>All meaning comes with language and signs!</li>
+                            <li>There are no facts only interpretations!</li>
+                            <li>A fact is a language sentence and hence only a representation. Fact Vs Reality.</li>
+                            <li>Learn your language game's rules!</li>
+                            <li>Language is the most important part of my life.</li>
+                            <li>Language is the world.</li>
+                            <li>Choice of words merely endorses thoughts. But they dictate the direction of the message.</li>
+                            <li>Paradoxes are problems of the language, not reality.</li>
+                            <li>Language is not blind.</li>
+                            <li>The last thing is clarity.</li>
+                            <li>Minds are private, not their expressions to the world.</li>
+                            <li>People project their meaning into texts.</li>
+                        </ul>
+
+                        <h2>Logic</h2>
+                        <ul>
+                            <li>Is logic the same in all simulations?</li>
+                            <li>Is reasoning necessary if there is only a single being?</li>
+                            <li>Macro is a thinking style.</li>
+                            <li>Nothing is original except the whole!</li>
+                            <li>Bachelors are unmarried.</li>
+                            <li>The idea is to out-philosophize others.</li>
+                        </ul>
+
+                        <h2>Value, Ethics, and Aesthetics</h2>
+                        <ul>
+                            <li>I consider a drone as an organism.</li>
+                            <li>I need a computer that can render love for me.</li>
+                            <li>Access to storage is empowerment!</li>
+                            <!-- <li>Creativity is not about control, it is about letting go.</li> -->
+                            <li>What makes beauty appealing is that it is useful.</li>
+                            <!-- <li>Unlike geographies, thoughts aren't tactile and aren't limited, so publicness is not a responsibility in virtual groups.</li> -->
+                            <!-- <li>Sometimes some ideas are so beautiful that you will momentarily accept and revere them before analyzing them.</li> -->
+                            <li>My ethics will only ever be direct deductions from my metaphysics. All other accepted ethics will be rejected. Like that of Schopenhauer!</li>
+                            <!-- <li>You are a plague.</li> -->
+                            <li>Love.</li>
+                            <li>I want to understand how we assume value in things.</li>
+                            <li>Bias is different but love is same.</li>
+                            <li>There is no meaning in this world. There are 2 cars and 5 pens in this world.</li>
+                            <li>Love is every experience you call love. Likewise, other emotions.</li>
+                            <li>I think it is only in the mind that one can love.</li>
+                            <li>Love is a man's truest and most creative expression.</li>
+                            <li>Inspiration is more real than love!</li>
+                            <!-- <li>Confidence and Exploration depend on the type of sense of ownership!</li> -->
+                            <li>Government cannot control morals.</li>
+                            <li>Value arises from the contract. No value ever is not from some contract.</li>
+                            <li>To love someone is an amazing painkiller, and a good night's sleep!</li>
+                            <li>Respect is a protocol? or a feeling?</li>
+                            <li>The alien within.</li>
+                            <li>It might be the case that God created us, but I don't think he cares about our morality.</li>
+                            <li>Value requires a valuer.</li>
+                            <!-- <li>It's morally wrong if you hurt any sentient being, and also it is morally wrong if you disrespectfully damage any nonliving tool you have.</li> -->
+                            <li>What is not boring? Is art boring?</li>
+                            <li>Not just humanity. Consciousness first.</li>
+                            <!-- <li>Bored while pooping.</li> -->
+                            <li>Practice more of what is important, what you love.</li>
+                            <li>It is very hard to focus without a purpose.</li>
+                            <li>You are my stakeholder.</li>
+                        </ul>
+
+                        <h2>Epistemology (About Knowledge)</h2>
+                        <ul>
+                            <li>Learning and Knowledge are personal!</li>
+                            <li>Education is all about equipping with tools.</li>
+                            <li>My belief is my knowledge.</li>
+                            <li>A Probabilistic trust model is peaceful for the mind.</li>
+                            <li>Part of the truth is disliking, liking, action, and inaction.</li>
+                            <li>I don't know if any of the things I say are correct at all! I'm afraid, I don't even seem to understand the nature of correctness at all.</li>
+                            <li>Did I ever prove anything in my life?</li>
+                            <li>I don't know anything for certain; this feeling is heavy, yet I will act.</li>
+                            <li>Is truth always inspiring?</li>
+                            <li>Truth is important.</li>
+                            <li>Nonsense is everywhere.</li>
+                            <li>It is our duty (and is an advantage) to support the truth.</li>
+                            <li>Some truths are more important than food and money.</li>
+                        </ul>
+
+                        <h2>Critical and Social</h2>
+                        <ul>
+                            <li>I love how world states and problems can be mathematically put.</li>
+                            <li>How to frame society as a robotic system?</li>
+                            <li>Society: Multiple intelligent swarms with plenty of independent self-centric agents in them.</li>
+                            <li>Can unaddressed memories in a computer give it consciousness?</li>
+                            <li>Plan in language space and execute in action space.</li>
+                            <li>I have a dream to map the entire world in 3D and 4Pi.</li>
+                            <li>Inference to the best explanation.</li>
+                            <li>Each moment/iteration asks itself, what it should, where it should get its arguments from?... Is our brain discretely functioning with time?</li>
+                            <li>Commands are programs written by someone else.</li>
+                            <li>Obviously, output depends on the tools used.</li>
+                            <li>It is empowerment to be able to do shit on the web!</li>
+                            <li>It's not about learning the popular tools, it is about finding the right tools for your use case.</li>
+                            <!-- <li>Give people wonderful tools, and they will do wonderful things.</li> -->
+                            <li>Education is a tool, but every time you use it, it doesn't wear but grows.</li>
+                            <li>My child will be a cyborg.</li>
+                            <li>To accelerate human evolution.</li>
+                            <li>Dextrousity gave us cognition.</li>
+                            <li>Technological borders Nation-state borders.</li>
+                            <li>Democratizing every industry.</li>
+                            <li>When you learn a language, you change.</li>
+                            <li>With every word I type/say, I am feeling conscious that I'm using language.</li>
+                            <li>I think it is good for individuals to take the responsibility of learning certain knowledge whether or not it is useful for them personally.</li>
+                            <li>We shouldn't be dismissive of bad ideas.</li>
+                            <li>Games create strong social bonds.</li>
+                            <li>Only compute-intensive philosophies should try to reach more people for their brains.</li>
+                            <li>A nation may brand itself as a unifying agent, but all nations, like all classes/categories, are divided by definition.</li>
+                            <li>My eyes look like that of a dead man. They are dull. But I like them. They show me this world and art.</li>
+                            <li>Metaphysics is the presumption from which you derive all other studies!</li>
+                            <li>I want to have good conversations, I want to be fearless.</li>
+                            <li>I am a free man.</li>
+                            <li>In company, you kill yourself.</li>
+                            <li>I don't live in the real world. So, I can't thrive by usual standards.</li>
+                            <li>Freedom from god, freedom from bonds, and freedom from the state are liberation from the external.</li>
+                            <li>Standing for oneself is the sexiest quality.</li>
+                            <li>What is the difference between a nation and a social group?</li>
+                            <li>I think honesty helps you appreciate other honest people.</li>
+                            <li>I deeply desire to engage in conversations. Conversations that never happened.</li>
+                            <li>I still stand on the fact that doing philosophy is a luxury.</li>
+                            <li>Why nihilists won't suicide?</li>
+                            <li>In fact, everything is just a category/class. They don't have meaning at all. LED, Bus, Man, Taste,...</li>
+                            <li>I think we rely a lot on language to propagate and represent knowledge.</li>
+                            <li>The reality "continues" to exist.</li>
+                            <li>I think I should fix the language.</li>
+                            <li>There is no freedom in the true sense.</li>
+                            <li>I think it is important to listen to everyone's voice.</li>
+                            <li>One cannot understand what is wrong.</li>
+                            <li>Some people can believe the wrong and also expect you to believe it. This isn't impossible. They are sometimes mere sensors without a sensor model of the world.</li>
+                            <li>When you have infinite love, try loving animals.</li>
+                            <li>Breaking laws makes bad laws clear.</li>
+                            <li>Philosophy is not a belief system nor is it a knowledge system.</li>
+                            <li>Present your self-fatal questions!</li>
+                            <li>There's nothing unique about being the world's tallest building.</li>
+                            <li>Some things are to be given to the most dedicated, not necessarily to the best!</li>
+                            <li>How important is it to understand the rules of society?</li>
+                            <li>Missed duties are more daunting than missed opportunities.</li>
+                            <li>As long as I can afford quality food, health, shelter, internet, and time for friends I am cool. I can just imagine other expensive shit!</li>
+                            <li>I don't want to pay for any education!</li>
+                            <li>The foundation of any system = exploitation.</li>
+                            <li>Bring meme culture to political relevance.</li>
+                            <li>Need for Alien Policy.</li>
+                            <li>All that is needed to do great work is to do what you love.</li>
+                            <li>For me, India is a territory, not a specific people.</li>
+                            <li>The healthiest are the smartest.</li>
+                            <li>I have nothing to do with any religion.</li>
+                            <li>One should be conscious enough to figure out if they are in a dilemma. I go through multiple of them each day. Some noticed, some not.</li>
+                            <li>Altruists have no empathy for themselves.</li>
+                            <li>Common sense is social sense.</li>
+                            <li>Alienation is a real problem. Try not to alienate others and try to familiarize yourself with alien situations.</li>
+                            <li>Sociological Imagination can help you appreciate that you are a part of society.</li>
+                            <li>Religion is an imagination.</li>
+                            <li>Any intelligent trade is a win-win.</li>
+                            <li>Self-interest prevails.</li>
+                            <!-- <li>There is no such thing as a free lunch.</li> -->
+                            <li>Overhauling the status quo/society completely is not as hard as it immediately strikes. We are just changing the present, not the whole history behind it. Ex: Question of God.</li>
+                            <li>Everyone should become an entrepreneur.</li>
+                            <li>Without regular affirmation, you will lose your patriotism.</li>
+                            <li>Curb hatred, and that's all.</li>
+                            <li>People can be freer without guns in their hands.</li>
+                            <li>You are simply your society/nation.</li>
+                            <li>No one's classical unless they are taught to be.</li>
+                            <li>Social will is created.</li>
+                            <li>Not yielded by the weight of society, I am a little strange.</li>
+                            <li>Labs are prisons.</li>
+                            <li>I can neither promise rights nor force duties in and on any society. I am just a developing animal.</li>
+                            <li>Love the people of your nation.</li>
+                            <li>If you are classical, you are not understanding yourself.</li>
+                            <li>I am not just me but my society, and I am selfish.</li>
+                            <li>Consciousness, I wish.</li>
+                            <li>A good teacher protects his students from his own influence.</li>
+                            <li>Once you start, you start enjoying.</li>
+                            <li>I plan only to understand what's important to me.</li>
+                            <li>I think people need better feedback.</li>
+                            <li>Selfish gene.</li>
+                            <li>One day I want to be able to buy time.</li>
+                            <li>Apples, peaches, pears, and plums are all from the Rose family.</li>
+                            <li>IIT made me feel national; Hyderabad made me feel national; Telugu made me feel national; Even Technology made me feel national. But, Hinduism couldn't. Because it never really mattered to me as an INDIVIDUAL.</li>
+                            <li>Houses protect humans from other animals. Society protects one human from the other humans. Treaties protect one society from the other. Only Culture can protect society from itself and its wrongdoings.</li>
+                            <!-- <li>You don't need to abuse the law as long as you understand the risk of not respecting it.</li> -->
+                            <li>Humans are not the center.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other Interests Section -->
+            <section id="interests" class="content-section">
+                <div class="post">
+                    <header class="post-header">
+                        <h1 class="post-title">Other Interests</h1>
+                        <p class="desc">Photography and other creative pursuits</p>
+                    </header>
+
+                    <div class="interests">
+                        
+
+                        <h2>Hobby Aeromodelling</h2>
+                        <p>I worked on designing and building of multiple drones, including fixed-wing aircraft and quadcopters.</p>
+                        <div class="aeromodelling-gallery">
+                            <div class="gallery-grid">
+                                <div class="gallery-item">
+                                    <img src="../Images/drones1.jpg" alt="Drone 1" loading="lazy">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="../Images/drones2.jpg" alt="Drone 2" loading="lazy">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="../Images/drones3.png" alt="Drone 3" loading="lazy">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="../Images/gliders1.jpg" alt="Glider" loading="lazy">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="../Images/kites.jpg" alt="Kites" loading="lazy">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="../Images/planes1.jpg" alt="Aircraft Model 1" loading="lazy">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="../Images/planes2.jpg" alt="Aircraft Model 2" loading="lazy">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="../Images/planes3.jpg" alt="Aircraft Model 3" loading="lazy">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="../Images/planes4.jpg" alt="Aircraft Model 4" loading="lazy">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="../Images/planes5.jpg" alt="Aircraft Model 5" loading="lazy">
+                                </div>
+                                <!-- <div class="gallery-item">
+                                    <img src="../Images/hdrone_aeromodel.png" alt="Drone Aeromodel" loading="lazy">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="../Images/boeing.jpeg" alt="Boeing Model" loading="lazy">
+                                </div> -->
+                            </div>
+                        </div>
+                        <h2>Photography</h2>
+                        <p>Photos captured with Google Pixel</p>
+                        <div class="photo-gallery" style="margin: 2rem 0;">
+                            <iframe width="760px" height="500px" src="https://sway.cloud.microsoft/s/QPCSkAhRrWojGAHT/embed" frameborder="0" marginheight="0" marginwidth="0" max-width="100%" sandbox="allow-forms allow-modals allow-orientation-lock allow-popups allow-same-origin allow-scripts" scrolling="no" style="border: none; max-width: 100%; max-height: 100vh" allowfullscreen mozallowfullscreen msallowfullscreen webkitallowfullscreen></iframe>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- Contact Section -->
+            <section id="contact" class="content-section">
+                <div class="post">
+                    <header class="post-header">
+                        <h1 class="post-title">Contact</h1>
+                    </header>
+
+                    <div class="contact">
+                        <div class="clearfix">
+                            <p>Feel free to reach out for collaborations, research discussions, or just to connect!</p>
+                            
+                            <p><strong>Email:</strong> <a href="mailto:shashankyld@gmail.com">shashankyld@gmail.com</a></p>
+                            <p><strong>Location:</strong> Bonn, Germany</p>
+                            
+                            <div class="social" style="justify-content: flex-start; margin-top: 2rem;">
+                                <a href="https://github.com/shashankyld" target="_blank" aria-label="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <!-- Google Scholar -->
+                                <a href="https://scholar.google.com/citations?user=fLnKN7YAAAAJ&hl=en" target="_blank" aria-label="Google Scholar">
+                                    <i class="fab fa-google"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/shashank-dammalapati-03169b145/" target="_blank" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://twitter.com/sha0nk" target="_blank" aria-label="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.instagram.com/shashank4pi/" target="_blank" aria-label="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://open.spotify.com/show/6cfYcoQQenVXiGFyxjWpWr" target="_blank" aria-label="Spotify">
+                                    <i class="fab fa-spotify"></i>
+                                </a>
+                                
+                            </div>
+                        </div>
+
+                        <!-- <form class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn">Send Message</button>
+                        </form> -->
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="script_alfolio.js"></script>
+</body>
+</html>
