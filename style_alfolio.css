@@ -769,6 +769,60 @@ html[data-theme="dark"] .navbar {
   margin-bottom: 0;
 }
 
+/* Reading Lists Section */
+.reading-lists {
+  margin: 3rem 0;
+}
+
+.reading-lists h3 {
+  color: var(--global-theme-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.book-list {
+  margin-bottom: 2rem;
+}
+
+.book-item {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.book-item:last-child {
+  border-bottom: none;
+}
+
+.book-item h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.book-item h4 a {
+  color: var(--global-text-color);
+  text-decoration: none;
+}
+
+.book-item h4 a:hover {
+  color: var(--global-theme-color);
+}
+
+.book-item .authors {
+  color: var(--global-text-color-light);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.book-item .description {
+  color: var(--global-text-color);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar-nav {
