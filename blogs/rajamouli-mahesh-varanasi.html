@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>World of Varanasi – The Movie in 3D</title>
+    <title>World of Varanasi in 3D</title>
     <link rel="stylesheet" href="../style_alfolio.css" />
     <style>
         .splat-container {
@@ -37,18 +37,18 @@
                 </header>
 
                 <div class="post-content">
-                    <p class="note">These 3D scenes are scrappy since they are generated from a single image. I will update them with better 3D models using video-world models like VEO.</p>
+                    <!-- <p class="note">These 3D scenes are scrappy since they are generated from a single image. I will update them with better 3D models using video-world models like VEO.</p> -->
+<!-- Mahesh Splat -->
+                    <div class="splat-container">
+                        <iframe src="../3rdparty/splat/index.html?url=MB_gaussians.ply"></iframe>
+                    </div>
 
                     <!-- Rama Splat -->
                     <div class="splat-container">
                         <iframe src="../3rdparty/splat/index.html?url=rama_gaussians.ply"></iframe>
                     </div>
 
-                    <!-- Mahesh Splat -->
-                    <div class="splat-container">
-                        <iframe src="../3rdparty/splat/index.html?url=MB_gaussians.ply"></iframe>
-                    </div>
-
+                    
                     <!-- Varanasi Splat -->
                     <div class="splat-container">
                         <iframe src="../3rdparty/splat/index.html?url=varanasi_color_corrected_gaussians.ply"></iframe>
@@ -57,7 +57,7 @@
                     <p class="note">In the trailer there is only a single view of the city, I will try to use imagined views from Google VEO–like models to help reconstruct the city more accurately.</p>
 
                     <video width="100%" controls>
-                        <source src="varanasi_extended.mp4" type="video/mp4" />
+                        <source src="../Images/varanasi_extended.mp4" type="video/mp4" />
                     </video>
                 </div>
             </article>
