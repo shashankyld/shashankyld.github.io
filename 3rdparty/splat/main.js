@@ -757,11 +757,11 @@ async function main() {
 
     const rowLength = 3 * 4 + 3 * 4 + 4 + 4;
     const reader = req.body.getReader();
-    let splatData = new Uint8Array(req.headers.get("content-length"));
+    const chunks = [];
+    let totalSize = 0;
+    let isPlyFile = false;
 
-    const downsample =
-        splatData.length / rowLength > 500000 ? 1 : 1 / devicePixelRatio;
-    console.log(splatData.length / rowLength, downsample);
+    const downsample = 1 / devicePixelRatio; // default, will adjust later
 
     const worker = new Worker(
         URL.createObjectURL(
@@ -1450,27 +1450,54 @@ async function main() {
         const { done, value } = await reader.read();
         if (done || stopLoading) break;
 
-        splatData.set(value, bytesRead);
-        bytesRead += value.length;
+        chunks.push(value);
+        totalSize += value.length;
+        bytesRead = totalSize;
 
-        if (vertexCount > lastVertexCount) {
-            if (!isPly(splatData)) {
-                worker.postMessage({
-                    buffer: splatData.buffer,
-                    vertexCount: Math.floor(bytesRead / rowLength),
-                });
+        // Check if it's ply after first chunk
+        if (chunks.length === 1) {
+            const firstChunk = new Uint8Array(value.buffer, value.byteOffset, Math.min(value.byteLength, 10));
+            isPlyFile = isPly(firstChunk);
+        }
+
+        const vertexCount = isPlyFile ? 0 : Math.floor(bytesRead / rowLength); // for ply, no vertex count yet
+
+        if (vertexCount > lastVertexCount && !isPlyFile) {
+            // For splat, send partial
+            const tempData = new Uint8Array(bytesRead);
+            let offset = 0;
+            for (const chunk of chunks) {
+                tempData.set(chunk, offset);
+                offset += chunk.length;
             }
+            worker.postMessage({
+                buffer: tempData.buffer,
+                vertexCount: vertexCount,
+            });
             lastVertexCount = vertexCount;
+        }
+
+        // Update progress
+        const progress = document.getElementById("progress");
+        if (progress) {
+            progress.style.width = (bytesRead / (bytesRead + 1000000)) * 100 + "%"; // approximate
         }
     }
     if (!stopLoading) {
-        if (isPly(splatData)) {
-            // ply file magic header means it should be handled differently
+        // Concatenate all chunks
+        const splatData = new Uint8Array(totalSize);
+        let offset = 0;
+        for (const chunk of chunks) {
+            splatData.set(chunk, offset);
+            offset += chunk.length;
+        }
+
+        if (isPlyFile) {
             worker.postMessage({ ply: splatData.buffer, save: false });
         } else {
             worker.postMessage({
                 buffer: splatData.buffer,
-                vertexCount: Math.floor(bytesRead / rowLength),
+                vertexCount: Math.floor(totalSize / rowLength),
             });
         }
     }
