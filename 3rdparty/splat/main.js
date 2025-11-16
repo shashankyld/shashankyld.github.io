@@ -759,11 +759,13 @@ async function main() {
 
     const rowLength = 3 * 4 + 3 * 4 + 4 + 4;
     const reader = req.body.getReader();
-    let splatData = new Uint8Array(req.headers.get("content-length"));
+    const contentLength = req.headers.get("content-length");
+    let splatData = contentLength ? new Uint8Array(contentLength) : new Uint8Array();
+    let chunks = [];
+    let totalSize = 0;
 
-    const downsample =
-        splatData.length / rowLength > 500000 ? 1 : 1 / devicePixelRatio;
-    console.log(splatData.length / rowLength, downsample);
+    const downsample = 1 / devicePixelRatio; // will adjust later based on actual data
+    console.log("Loading from:", url.toString());
 
     const worker = new Worker(
         URL.createObjectURL(
@@ -1448,31 +1450,34 @@ async function main() {
     let lastVertexCount = -1;
     let stopLoading = false;
 
+    // Read all data first
     while (true) {
         const { done, value } = await reader.read();
         if (done || stopLoading) break;
 
-        splatData.set(value, bytesRead);
-        bytesRead += value.length;
-
-        if (vertexCount > lastVertexCount) {
-            if (!isPly(splatData)) {
-                worker.postMessage({
-                    buffer: splatData.buffer,
-                    vertexCount: Math.floor(bytesRead / rowLength),
-                });
-            }
-            lastVertexCount = vertexCount;
-        }
+        chunks.push(value);
+        totalSize += value.length;
     }
+
+    // Concatenate all chunks
+    splatData = new Uint8Array(totalSize);
+    let offset = 0;
+    for (const chunk of chunks) {
+        splatData.set(chunk, offset);
+        offset += chunk.length;
+    }
+
     if (!stopLoading) {
         if (isPly(splatData)) {
+            console.log("Processing PLY file:", splatData.length, "bytes");
             // ply file magic header means it should be handled differently
             worker.postMessage({ ply: splatData.buffer, save: false });
         } else {
+            console.log("Processing SPLAT file:", splatData.length, "bytes");
+            const vertexCount = Math.floor(splatData.length / rowLength);
             worker.postMessage({
                 buffer: splatData.buffer,
-                vertexCount: Math.floor(bytesRead / rowLength),
+                vertexCount: vertexCount,
             });
         }
     }
