@@ -743,10 +743,10 @@ async function main() {
         viewMatrix = JSON.parse(decodeURIComponent(location.hash.slice(1)));
         carousel = false;
     } catch (err) {}
-    const url = params.get("url") ? new URL(
-        params.get("url"),
-        "https://huggingface.co/cakewalk/splat-data/resolve/main/",
-    ) : "https://shashankyld.github.io/splats/MB_gaussians.ply";
+    const url = new URL(
+        params.get("url") || "MB_gaussians.ply",
+        "https://shashankyld.github.io/splats/",
+    );
     const req = await fetch(url, {
         mode: "cors", // no-cors, *cors, same-origin
         credentials: "omit", // include, *same-origin, omit
