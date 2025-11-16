@@ -16,6 +16,7 @@
             border: 1px solid #ccc;
             margin: 20px 0;
             cursor: pointer;
+            position: relative;
         }
         iframe {
             width: 100%;
@@ -25,6 +26,10 @@
         }
         .splat-container:hover iframe {
             outline: 2px solid #007acc;
+        }
+        .splat-container.focused {
+            border: 2px solid #007acc;
+            box-shadow: 0 0 10px rgba(0, 122, 204, 0.3);
         }
         .splat-overlay {
             position: absolute;
@@ -44,39 +49,7 @@
     </style>
 </head>
 <body>
-    <!-- Top Navigation Bar -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="../index.html" class="navbar-brand">
-                <span class="font-weight-bold">Shashank</span> Dammalapati
-            </a>
-            
-            <div class="navbar-toggle" id="navbar-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            
-            <ul class="navbar-nav" id="navbar-nav">
-                <li><a href="../index.html#about" class="nav-link">About</a></li>
-                <li><a href="../index.html#news" class="nav-link">News</a></li>
-                <li><a href="../index.html#publications" class="nav-link">Publications</a></li>
-                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
-                <li><a href="../index.html#competitions" class="nav-link">Competitions</a></li>
-                <li><a href="../index.html#blogs" class="nav-link active">Blogs</a></li>
-                <li><a href="../index.html#interests" class="nav-link">Interests</a></li>
-                <li><a href="../index.html#aphorisms" class="nav-link">Aphorisms</a></li>
-                <li><a href="../index.html#reading-lists" class="nav-link">Reading Lists</a></li>
-                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
-                <li>
-                    <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle between light and dark theme">
-                        <i class="fas fa-sun theme-icon theme-icon-light"></i>
-                        <i class="fas fa-moon theme-icon theme-icon-dark"></i>
-                    </button>
-                </li>
-            </ul>
-        </div>
-    </nav>
+
 
     <!-- Main Content -->
     <div class="container">
@@ -120,36 +93,70 @@
         </main>
     </div>
 
-    <script src="../scripts.js"></script>
     <script>
+        let activeSplatContainer = null;
+        
         // Enhance iframe interaction
         document.querySelectorAll('.splat-container').forEach(container => {
             const iframe = container.querySelector('iframe');
             const overlay = container.querySelector('.splat-overlay');
             
-            container.addEventListener('click', () => {
+            // Handle clicks anywhere in the splat container
+            container.addEventListener('click', (e) => {
+                e.stopPropagation();
+                
+                // Remove focus from other containers
+                document.querySelectorAll('.splat-container').forEach(c => c.classList.remove('focused'));
+                
+                // Focus this container
+                container.classList.add('focused');
+                activeSplatContainer = container;
                 iframe.focus();
+                
                 if (overlay) overlay.style.display = 'none';
             });
             
+            // Handle iframe load
             iframe.addEventListener('load', () => {
-                // Try to focus the canvas inside the iframe
                 try {
                     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
                     const canvas = iframeDoc.getElementById('canvas');
                     if (canvas) {
                         canvas.setAttribute('tabindex', '0');
+                        // Forward focus to canvas when iframe gets focus
+                        iframe.addEventListener('focus', () => canvas.focus());
                     }
                 } catch (e) {
-                    // Cross-origin restrictions may prevent this
-                    console.log('Could not access iframe content for focus enhancement');
+                    console.log('Cross-origin restrictions prevent iframe content access');
                 }
             });
             
-            // Show overlay again when mouse leaves
+            // Show overlay when mouse leaves unfocused container
             container.addEventListener('mouseleave', () => {
-                if (overlay) overlay.style.display = 'block';
+                if (!container.classList.contains('focused') && overlay) {
+                    overlay.style.display = 'block';
+                }
             });
+        });
+        
+        // Remove focus when clicking outside any splat container
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.splat-container')) {
+                document.querySelectorAll('.splat-container').forEach(container => {
+                    container.classList.remove('focused');
+                    const overlay = container.querySelector('.splat-overlay');
+                    if (overlay) overlay.style.display = 'block';
+                });
+                activeSplatContainer = null;
+            }
+        });
+        
+        // Prevent keyboard events from bubbling to page when splat is focused
+        document.addEventListener('keydown', (e) => {
+            if (activeSplatContainer) {
+                // Let the iframe handle the keyboard event, don't bubble to page
+                e.stopPropagation();
+            }
         });
     </script>
 </body>
