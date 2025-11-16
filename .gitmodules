@@ -1,0 +1,3 @@
+[submodule "3rdparty/splat"]
+	path = 3rdparty/splat
+	url = https://github.com/antimatter15/splat
