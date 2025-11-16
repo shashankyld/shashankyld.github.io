@@ -759,7 +759,7 @@ async function main() {
     const reader = req.body.getReader();
     const chunks = [];
     let totalSize = 0;
-    let isPlyFile = false;
+    let isPlyFile = url.toString().endsWith('.ply');
 
     const downsample = 1 / devicePixelRatio; // default, will adjust later
 
@@ -1453,12 +1453,6 @@ async function main() {
         chunks.push(value);
         totalSize += value.length;
         bytesRead = totalSize;
-
-        // Check if it's ply after first chunk
-        if (chunks.length === 1) {
-            const firstChunk = new Uint8Array(value.buffer, value.byteOffset, Math.min(value.byteLength, 10));
-            isPlyFile = isPly(firstChunk);
-        }
 
         const vertexCount = isPlyFile ? 0 : Math.floor(bytesRead / rowLength); // for ply, no vertex count yet
 
